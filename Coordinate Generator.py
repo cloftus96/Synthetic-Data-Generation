@@ -1,4 +1,4 @@
-def coords(in1, in2):
+def coords(in1, in2, in3):
     import math
     length = in1
     angle = in2

@@ -1,11 +1,11 @@
-def script(in1, in2, in3):
+def script(x, y, z, iterations, cc):
     print('pos1 = player modelToWorld [0,5,5]')
     print('cam = "camera" camCreate pos1;')
     print('cam cameraEffect ["INTERNAL", "BACK"];\n')
     print('pos2 = player modelToWorld [0,100,150];')
     print('cam camSetPos pos2;')
     print('cam camSetDir (pos2 vectorFromTo pos1);')
-    print('cam camCommit 5;\n')
+    print('cam camCommit %d;\n' % cc)
     print('angle = 10;')
     print('0 = [] spawn')
     print('{')
@@ -13,11 +13,11 @@ def script(in1, in2, in3):
     print('\t{')
     print('\t\twaitUntil {camCommitted cam};')
     print('\t\tscreenshot "";')
-    for pos in range(3, 11):
-        print('\t\tpos%d = player modelToWorld [%s,%s,%s];' % (pos, in1, in2, in3))
+    for pos in range(3, iterations):
+        print('\t\tpos%d = player modelToWorld [%s,%s,%s];' % (pos, x, y, z))
         print('\t\tcam camSetPos pos%d;' % pos)
         print('\t\tcam camSetDir (pos%d vectorFromTo pos1);' % pos)
-        print('\t\tcam camCommit 5;')
+        print('\t\tcam camCommit %d;' % cc)
         print('\t\twaitUntil {camCommitted cam};')
         print('\t\tscreenshot "";\n')
     print('\t\tunit1 setDir angle;')
@@ -26,4 +26,4 @@ def script(in1, in2, in3):
     print('};')
 
 
-script(1, 2, 3)
+script(1, 2, 3, 11, 5)

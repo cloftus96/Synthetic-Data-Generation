@@ -9,4 +9,4 @@ def coords(in1, in2, in3):
     y ='%.3f'%(new_y)
     print(x)
     print(y)
-    return (x, y)
+    return (x, y, in3)

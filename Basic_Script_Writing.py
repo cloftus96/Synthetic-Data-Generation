@@ -6,6 +6,7 @@ def script(postup, iterations, cc):
     print('cam camSetPos pos2;')
     print('cam camSetDir (pos2 vectorFromTo pos1);')
     print('cam camCommit %d;\n' % cc)
+    print('angleface = 0;')
     print('angle = 10;')
     print('0 = [] spawn')
     print('{')
@@ -21,7 +22,7 @@ def script(postup, iterations, cc):
         print('\t\twaitUntil {camCommitted cam};')
         print('\t\tscreenshot "";\n')
     print('\t\tunit1 setDir angle;')
-    print('\t\tangle = angle+10;')
+    print('\t\tangleface = angleface+angle;')
     print('\t};')
     print('};')
 

@@ -1,4 +1,4 @@
-def script(x, y, z, iterations, cc):
+def script(postup, iterations, cc):
     print('pos1 = player modelToWorld [0,5,5]')
     print('cam = "camera" camCreate pos1;')
     print('cam cameraEffect ["INTERNAL", "BACK"];\n')
@@ -13,10 +13,10 @@ def script(x, y, z, iterations, cc):
     print('\t{')
     print('\t\twaitUntil {camCommitted cam};')
     print('\t\tscreenshot "";')
-    for pos in range(3, iterations):
-        print('\t\tpos%d = player modelToWorld [%s,%s,%s];' % (pos, x, y, z))
-        print('\t\tcam camSetPos pos%d;' % pos)
-        print('\t\tcam camSetDir (pos%d vectorFromTo pos1);' % pos)
+    for idx, pos in enumerate(postup):
+        print('\t\tpos%d = player modelToWorld [%d,%d,%d];' % (idx, postup[idx][0], postup[idx][1], postup[idx][2]))
+        print('\t\tcam camSetPos pos%s;' % str(int(idx)+3))
+        print('\t\tcam camSetDir (pos%s vectorFromTo pos1);' % str(int(idx)+3))
         print('\t\tcam camCommit %d;' % cc)
         print('\t\twaitUntil {camCommitted cam};')
         print('\t\tscreenshot "";\n')
@@ -26,4 +26,4 @@ def script(x, y, z, iterations, cc):
     print('};')
 
 
-script(1, 2, 3, 11, 5)
+script([(1, 2, 3), (4, 5, 6), (7, 8, 9)], 6, 5)

@@ -1,5 +1,5 @@
 # How to Open Arma 3 in Python
-# make sure that the path here is identical to your Arma execuatble on your PC
+# make sure that the path here is identical to your Arma executable on your PC
 
 # necessary imports
 from pynput.keyboard import Key, Controller
@@ -20,7 +20,7 @@ time.sleep(180)
 # give 2 seconds between each keystroke
 
 # right arrow
-keyboard.press(Key.right)
+keyboard.press(Key.rght)
 keyboard.release(Key.right)
 
 time.sleep(2)

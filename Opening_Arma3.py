@@ -10,14 +10,14 @@ import time
 keyboard = Controller()
 
 # Open Arma 3
-subprocess.Popen(['C:\Program Files (x86)\Steam\steamapps\common\Arma 3\Arma3.exe'])
+subprocess.Popen(['C:\Program Files (x86)\Steam\steamapps\common\Arma 3\Arma3_x64.exe'])
 
 # wait for the cpu to open the game
 time.sleep(180)
 
 # simulate keystrokes to open the editor
 # right arrow 3 times then enter
-# give 10 seconds between each keystroke
+# give 2 seconds between each keystroke
 
 # right arrow
 keyboard.press(Key.right)

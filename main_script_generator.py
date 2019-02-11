@@ -11,7 +11,7 @@ def position_generator(angle_step, x_init):
     while curr_angle < 360:
         pos_array.append(Coordinate_Generator.coords(x_init, curr_angle, 100))
         curr_angle += angle_step
-    Basic_Script_Writing.script(pos_array, len(pos_array) + 2, default_cc)
+    Basic_Script_Writing.script(pos_array, default_cc)
 
 
 if __name__ == "__main__":

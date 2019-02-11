@@ -15,7 +15,7 @@ def script(pos, cc, angle):
     print('\t\twaitUntil {camCommitted cam};')
     print('\t\tscreenshot "";')
     for idx, val in enumerate(pos):
-        print('\t\tpos%d = player modelToWorld [%d,%d,%d];' % (idx, pos[idx][0], pos[idx][1], pos[idx][2]))
+        print('\t\tpos%d = player modelToWorld [%d,%d,%d];' % (idx + 3, pos[idx][0], pos[idx][1], pos[idx][2]))
         print('\t\tcam camSetPos pos%s;' % str(int(idx)+3))
         print('\t\tcam camSetDir (pos%s vectorFromTo pos1);' % str(int(idx)+3))
         print('\t\tcam camCommit %d;' % cc)
@@ -25,6 +25,3 @@ def script(pos, cc, angle):
     print('\t\tangleface = angleface+angle;')
     print('\t};')
     print('};')
-
-
-script([(1, 2, 3), (4, 5, 6), (7, 8, 9)], 6)

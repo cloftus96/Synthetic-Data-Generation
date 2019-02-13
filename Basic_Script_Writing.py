@@ -18,6 +18,7 @@ def script(pos, cc, angle):
         print('\t\twaitUntil {camCommitted cam};')
         print('\t\tscreenshot "";\n')
     print('\t\tunit1 setDir angleface;')
+    print('\t\tsleep %d;' % cc)
     print('\t\tangleface = angleface+angle;')
     print('\t};')
     print('};')

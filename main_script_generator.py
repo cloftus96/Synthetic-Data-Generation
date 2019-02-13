@@ -5,7 +5,7 @@ import sys
 
 def position_generator(angle_step, x_init, rota_angle_step):
     # maybe do error/type checking on the inputs later...
-    curr_angle = angle_step  # we do not need to start at zero. See basic_script_writing
+    curr_angle = 0
     default_cc = 2  # can take this as an argument if we want
     pos_array = []
     while curr_angle < 360:

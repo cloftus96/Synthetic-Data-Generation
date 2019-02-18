@@ -18,9 +18,9 @@ def script(pos, cc, angle):
     print('\t\t\twaitUntil {camCommitted cam};')
     print('\t\t\tscreenshot "";')
     for idx, val in enumerate(pos):
-        print('\t\t\tpos%d = player modelToWorld [%d,%d,%d];' % (idx + 3, pos[idx][0], pos[idx][1], pos[idx][2]))
-        print('\t\t\tcam camSetPos pos%s;' % str(int(idx)+3))
-        print('\t\t\tcam camSetDir (pos%s vectorFromTo pos1);' % str(int(idx)+3))
+        print('\t\t\tpos%d = player modelToWorld [%d,%d,%d];' % (idx + 2, pos[idx][0], pos[idx][1], pos[idx][2]))
+        print('\t\t\tcam camSetPos pos%s;' % str(int(idx)+2))
+        print('\t\t\tcam camSetDir (pos%s vectorFromTo pos1);' % str(int(idx)+2))
         print('\t\t\tcam camCommit %d;' % cc)
         print('\t\t\twaitUntil {camCommitted cam};')
         print('\t\t\tscreenshot "";\n')

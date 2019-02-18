@@ -1,5 +1,5 @@
 def script(pos, cc, angle):
-    print('pos1 = player modelToWorld [0,5,5]')
+    print('pos1 = player modelToWorld [0,5,5];')
     print('cam = "camera" camCreate pos1;')
     print('cam cameraEffect ["INTERNAL", "BACK"];\n')
     print('angleface = 0;')

@@ -6,7 +6,7 @@ def script(pos, cc, angle):
     print('angle = %d;\n' % angle)
     print('0 = [] spawn')
     print('{')
-    print('\twhile {angle <= 360} do')
+    print('\twhile {angle < 360} do')
     print('\t{')
     print('\t\twaitUntil {camCommitted cam};')
     print('\t\tscreenshot "";')

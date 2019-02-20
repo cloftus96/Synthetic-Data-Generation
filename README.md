@@ -12,6 +12,11 @@ In order for the script to work correctly:
 - The script has multiple instances of the Arma 3 executable path (arma3_x64.exe). This file is typically installed to the folder C:\Program Files (x86)\Steam\steamapps\common\Arma 3\\, which is the path used in the script. However, this can change system to system. Make sure that each instance of this path in this script corresponds to the correct path of your system. 
 - The console in Arma 3 must be completely cleared. Closing the game itself will not clear the commands in the command window, so they must be manually cleared so that when the script adds the code, it is not compromised.
 
+### Error Codes
+- Error Code 0: Script ran as intended
+- Error Code 1: Path to the game executable is incorrect
+- Error Code 2: Resolution unsupported by script
+
 ## Necessary Installations
 Use these commands in the Python terminal to install required packages:
 

@@ -94,14 +94,14 @@ if userWidth == 1366:
         time.sleep(1)
         pyautogui.click(button='left')
 
-        time.sleep(3)
+        time.sleep(1)
 
         # this click opens the console
         pyautogui.moveTo(411, 53, 1)
         time.sleep(1)
         pyautogui.click(button='left')
 
-        time.sleep(3)
+        time.sleep(1)
 
         # type the command to run the txt
         # this path is tentative. The full script will eventually create this file and place it in THIS path,
@@ -111,6 +111,13 @@ if userWidth == 1366:
 
         # run the script with a click
         pyautogui.moveTo(890, 351, 1)
+        time.sleep(1)
+        pyautogui.click(button='left')
+
+        time.sleep(1)
+
+        # cancel out of the console once the script is run (not done automatically)
+        pyautogui.moveTo(501, 675, 1)
         time.sleep(1)
         pyautogui.click(button='left')
 
@@ -170,6 +177,13 @@ elif userWidth == 1920:
 
         # run the script with a click
         pyautogui.moveTo(1130, 509, 1)
+        time.sleep(1)
+        pyautogui.click(button='left')
+
+        time.sleep(1)
+
+        # cancel out of the console once the script is run (not done automatically)
+        pyautogui.moveTo(786, 804, 1)
         time.sleep(1)
         pyautogui.click(button='left')
 

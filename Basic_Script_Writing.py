@@ -1,7 +1,10 @@
-def script(pos, cc, angle):
+def arma3_script_generator(pos, cc, angle):
     f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+")
-    f.write('_currentVehicle = createVehicle [mapPositionCoordX, mapPositionCoordY, 0]')
-    f.write('pos1 = player modelToWorld [0,5,5];\n')
+    f.write('_currentVehicle = "armaNameofVehicle" createVehicle [mapPositionCoordX, mapPositionCoordY, 0];\n')
+    f.write('createVehicleCrew _currentVehicle;\n')
+    f.write('_currentVehicle setdir 0;\n')
+    f.write('_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')
+    f.write('pos1 = _currentVehicle modelToWorld [0,5,5];\n')
     f.write('cam = "camera" camCreate pos1;\n')
     f.write('cam cameraEffect ["INTERNAL", "BACK"];\n\n')
     f.write('angleface = 0;\n')
@@ -9,8 +12,8 @@ def script(pos, cc, angle):
     f.write('angle = %d;\n\n' % angle)
     f.write('0 = [] spawn\n')
     f.write('{\n')
-    # top loop is vehicles
-    # next is vehicle positions on the map
+    # top loop vehicle positions
+    # next is vehicles
     # next is environments (fog, rain, time of day)
     # last is angles
     f.write('\twhile {fogvalue < .8} do\n')
@@ -27,7 +30,12 @@ def script(pos, cc, angle):
         f.write('\t\t\twaitUntil {camCommitted cam};\n')
         f.write('\t\t\tscreenshot "arma3screenshot";\n\n')
     f.write('\t\t\tangleface = angleface+angle;\n')
-    f.write('\t\t\tunit1 setDir angleface;\n')
+    f.write('\t\t\tforEach crew _createVehicle;\n')
+    f.write('\t\t\tdeleteVehicle _currentVehicle;\n')
+    f.write('\t\t\t_currentVehicle = "armaNameofVehicle" createVehicle [mapPositionCoordX, mapPositionCoordY, 0];\n')
+    f.write('\t\t\tcreateVehicleCrew _currentVehicle;\n')
+    f.write('\t\t\t_currentVehicle setdir angleface\n;')
+    f.write('\t\t\t_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')
     f.write('\t\t\tsleep %d;\n' % cc)
     f.write('\t\t};\n')
     f.write('\tfogvalue = fogvalue + .2;\n')

@@ -1,5 +1,6 @@
-def script(pos, cc, angle, file):
-    f = open(file, "w+")
+def script(pos, cc, angle):
+    f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+")
+    f.write('_currentVehicle = createVehicle [mapPositionCoordX, mapPositionCoordY, 0]')
     f.write('pos1 = player modelToWorld [0,5,5];\n')
     f.write('cam = "camera" camCreate pos1;\n')
     f.write('cam cameraEffect ["INTERNAL", "BACK"];\n\n')
@@ -8,6 +9,10 @@ def script(pos, cc, angle, file):
     f.write('angle = %d;\n\n' % angle)
     f.write('0 = [] spawn\n')
     f.write('{\n')
+    # top loop is vehicles
+    # next is vehicle positions on the map
+    # next is environments (fog, rain, time of day)
+    # last is angles
     f.write('\twhile {fogvalue < .8} do\n')
     f.write('\t{\n')
     f.write('\t\twhile {angleface < 360} do\n')
@@ -32,6 +37,3 @@ def script(pos, cc, angle, file):
     f.write('\t};\n')
     f.write('};\n')
     f.close()
-
-
-#script([(1, 2, 3), (4, 5, 6), (7, 8, 9)], 6)

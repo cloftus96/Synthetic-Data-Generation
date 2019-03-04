@@ -47,6 +47,12 @@ this path corresponds to the correct path in your system.
 the game itself will not clear the commands in the command 
 window, so they must be manually cleared so that when the 
 script adds the code, it is not compromised.
+- Some times of day are so dark that nothing can be seen
+(the times we believe are roughly from 12am-5am). There is
+a night vision mode in the game, but it is not implemented
+for this project.
+- Current supported resolutions are 1920x1080, and 1366x768.
+More resolutions may be added in the future.
 
 ### Error Codes
 - Error Code 0: Script ran as intended

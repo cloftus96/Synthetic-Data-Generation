@@ -47,7 +47,7 @@ def arma3_script_generator(pos, cc, angle):
     f.write('\t\t\tdeleteVehicle _currentVehicle;\n')
     f.write('\t\t\t_currentVehicle = "armaNameofVehicle" createVehicle [mapPositionCoordX, mapPositionCoordY, 0];\n')
     f.write('\t\t\tcreateVehicleCrew _currentVehicle;\n')
-    f.write('\t\t\t_currentVehicle setdir angleface\n;')
+    f.write('\t\t\t_currentVehicle setdir angleface;\n')
     f.write('\t\t\t_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')
     f.write('\t\t\tsleep %d;\n' % cc)
     f.write('\t\t};\n')

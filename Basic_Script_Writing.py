@@ -13,6 +13,8 @@
 
 def arma3_script_generator(pos, cc, angle):
     f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+")
+    f.write('0 = [] spawn\n')
+    f.write('{\n')
     f.write('_currentVehicle = "armaNameofVehicle" createVehicle [mapPositionCoordX, mapPositionCoordY, 0];\n')
     f.write('createVehicleCrew _currentVehicle;\n')
     f.write('_currentVehicle setdir 0;\n')
@@ -23,8 +25,6 @@ def arma3_script_generator(pos, cc, angle):
     f.write('angleface = 0;\n')
     f.write('fogvalue = 0;\n')
     f.write('angle = %d;\n\n' % angle)
-    f.write('0 = [] spawn\n')
-    f.write('{\n')
     # top loop vehicle positions
     # next is vehicles
     # next is environments (fog, rain, time of day)
@@ -33,18 +33,18 @@ def arma3_script_generator(pos, cc, angle):
     f.write('\t{\n')
     f.write('\t\twhile {angleface < 360} do\n')
     f.write('\t\t{\n')
-    f.write('\t\t\twaitUntil {camCommitted cam};\n')
-    f.write('\t\t\tscreenshot "arma3screenshot.png";\n')
+
     for idx, val in enumerate(pos):
-        f.write('\t\t\tpos%d = player modelToWorld [%d,%d,%d];\n' % (idx + 2, pos[idx][0], pos[idx][1], pos[idx][2]))
+        f.write('\t\t\tpos%d = pos%d vectorAdd [%d,%d,%d];\n' % (idx + 2, idx +1, pos[idx][0], pos[idx][1], pos[idx][2]))
         f.write('\t\t\tcam camSetPos pos%s;\n' % str(int(idx)+2))
-        f.write('\t\t\tcam camSetDir (pos%s vectorFromTo pos1);\n' % str(int(idx)+2))
+        f.write('\t\t\tcam camSetTarget _currentVehicle;\n')
         f.write('\t\t\tcam camCommit %d;\n' % cc)
         f.write('\t\t\twaitUntil {camCommitted cam};\n')
         f.write('\t\t\tscreenshot "arma3screenshot.png";\n\n')
     f.write('\t\t\tangleface = angleface+angle;\n')
-    f.write('\t\t\tforEach crew _createVehicle;\n')
+    f.write('\t\t\t{_currentVehicle deleteVehicleCrew _x} forEach crew _currentVehicle;\n')
     f.write('\t\t\tdeleteVehicle _currentVehicle;\n')
+    f.write('\t\t\tsleep %d;\n' % cc)
     f.write('\t\t\t_currentVehicle = "armaNameofVehicle" createVehicle [mapPositionCoordX, mapPositionCoordY, 0];\n')
     f.write('\t\t\tcreateVehicleCrew _currentVehicle;\n')
     f.write('\t\t\t_currentVehicle setdir angleface;\n')

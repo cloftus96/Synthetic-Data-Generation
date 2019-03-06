@@ -58,6 +58,7 @@ More resolutions may be added in the future.
 - Error Code 0: Script ran as intended
 - Error Code 1: Path to the game executable is incorrect
 - Error Code 2: Resolution unsupported by script
+- Error Code 3: Issue with .sqf file creation
 
 ## Necessary Installations
 Use these commands in the Python terminal to install required

@@ -3,16 +3,24 @@
 #     function: arma3_script_generator
 #
 #     details: creates a .sqf file in the specified path, then writes script lines to the file which
-#              are arma 3 functions
+#              are arma 3 functions and variables
 #
 #     parameters: pos - an array of coordinates for the camera to move to
 #                 cc - time in between each screenshot
-#                 angle - the angle between each screenshot
+#                 angle - the angle that the camera moves between each screenshot (will add up to 360
+#                 at the end of the loop)
 #
 #*******************************************************************************************************
 
 def arma3_script_generator(pos, cc, angle):
-    f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+")
+
+    try:
+        f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+")
+    except Exception:
+        print('ERROR:')
+        print('Issue opening the Data_Generator.sqf file. See arma3_script_generator function.')
+        exit(3)
+
     f.write('_currentVehicle = "armaNameofVehicle" createVehicle [mapPositionCoordX, mapPositionCoordY, 0];\n')
     f.write('createVehicleCrew _currentVehicle;\n')
     f.write('_currentVehicle setdir 0;\n')

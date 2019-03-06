@@ -21,7 +21,7 @@ def arma3_script_generator(pos, cc, angle):
         print('Issue opening the Data_Generator.sqf file. See arma3_script_generator function.')
         exit(3)
 
-    f.write('_currentVehicle = "armaNameofVehicle" createVehicle [mapPositionCoordX, mapPositionCoordY, 0];\n')
+    f.write('_currentVehicle = "%s" createVehicle [%d, %d, %d];\n' % (vehicle_name, map_pos[0], map_pos[1], map_pos[2]))
     f.write('createVehicleCrew _currentVehicle;\n')
     f.write('_currentVehicle setdir 0;\n')
     f.write('_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')
@@ -53,7 +53,7 @@ def arma3_script_generator(pos, cc, angle):
     f.write('\t\t\tangleface = angleface+angle;\n')
     f.write('\t\t\tforEach crew _createVehicle;\n')
     f.write('\t\t\tdeleteVehicle _currentVehicle;\n')
-    f.write('\t\t\t_currentVehicle = "armaNameofVehicle" createVehicle [mapPositionCoordX, mapPositionCoordY, 0];\n')
+    f.write('\t\t\t_currentVehicle = "%s" createVehicle [%d, %d, %d];\n' % (vehicle_name, map_pos[0], map_pos[1], map_pos[2]))
     f.write('\t\t\tcreateVehicleCrew _currentVehicle;\n')
     f.write('\t\t\t_currentVehicle setdir angleface\n;')
     f.write('\t\t\t_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')

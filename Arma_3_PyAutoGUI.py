@@ -17,7 +17,7 @@
 #    The pixel is designated by using the coordinates within the resolution,
 #    starting from the top left corner of the screen
 #    Examples: (0,0) is the very top left pixel
-#              (950, 540) would be roughly in the middle of the screen on 1920x1080
+#              (960, 540) would be in the middle of the screen on 1920x1080
 #
 #    click - a simple function that just automates a click at the current mouse
 #    coordinate. Default is a right click, the paramater here is added to make it

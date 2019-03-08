@@ -1,15 +1,11 @@
-#*******************************************************************************************************
-#
-#     function: arma3_script_generator
-#
-#     details: creates a .sqf file in the specified path, then writes script lines to the file which
-#              are arma 3 functions
-#
-#     parameters: pos - an array of coordinates for the camera to move to
-#                 cc - time in between each screenshot
-#                 angle - the angle between each screenshot (angle x number of loop iterations = 360)
-#
-#*******************************************************************************************************
+"""  function: arma3_script_generator
+
+     details: creates a .sqf file in the specified path, then writes script lines to the file which
+              are arma 3 functions
+
+     parameters: pos - an array of coordinates for the camera to move to
+                 cc - time in between each screenshot
+                 angle - the angle between each screenshot (angle x number of loop iterations = 360) """
 
 import os
 from pathlib import Path
@@ -72,7 +68,7 @@ def arma3_script_generator(map_pos, vehicle_name, pos, cc, angle):
 def create_mission_dir():
     """ This function creates the directory and files necessary to run our script as a mission. This includes putting
     a new folder in the default Arma 3 missions folder, as well as providing a default mission file and an init file
-    that points to our script (this causes our script to run immediately upon playing the mission."""
+    that points to our script (this causes our script to run immediately upon playing the mission. """
     missionsFolder = Path(os.path.expanduser('~\\Documents\\Arma 3\\missions'))
     customMission = Path(missionsFolder, '\\DataGeneration.Altis')
     if not customMission.exists():

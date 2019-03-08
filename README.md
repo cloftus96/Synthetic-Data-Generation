@@ -50,6 +50,9 @@ a night vision mode in the game, but it is not implemented
 for this project.
 - Current supported resolutions are 1920x1080, and 1366x768.
 More resolutions may be added in the future.
+- This project uses Python scripts. The python 3.7 interpreter
+must be installed on the system in order for the the main
+script in this project to run.
 
 ### Error Codes
 - Error Code 0: Script ran as intended

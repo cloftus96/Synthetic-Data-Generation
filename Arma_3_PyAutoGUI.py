@@ -130,6 +130,7 @@ def main():
 
             time.sleep(1)
 
+            # old data method
             # # run the script with a click
             # pyautogui.moveTo(890, 351, 1)
             # time.sleep(1)
@@ -220,6 +221,7 @@ def main():
 
             time.sleep(1)
 
+            # old data method
             # # this click opens the console
             # pyautogui.moveTo(286, 34, 1)
             # time.sleep(1)

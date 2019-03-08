@@ -14,7 +14,7 @@
 import os
 from pathlib import Path
 
-def arma3_script_generator(pos, cc, angle):
+def arma3_script_generator(map_pos, vehicle_name, pos, cc, angle):
 
     try:
         f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+")
@@ -25,7 +25,7 @@ def arma3_script_generator(pos, cc, angle):
 
     f.write('0 = [] spawn\n')
     f.write('{\n')
-    f.write('_currentVehicle = "armaNameofVehicle" createVehicle [mapPositionCoordX, mapPositionCoordY, 0];\n')
+    f.write('_currentVehicle = "%s" createVehicle [%d, %d, %d];\n' % (vehicle_name, map_pos[0], map_pos[1], map_pos[2]))
     f.write('createVehicleCrew _currentVehicle;\n')
     f.write('_currentVehicle setdir 0;\n')
     f.write('_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')
@@ -55,7 +55,7 @@ def arma3_script_generator(pos, cc, angle):
     f.write('\t\t\t{_currentVehicle deleteVehicleCrew _x} forEach crew _currentVehicle;\n')
     f.write('\t\t\tdeleteVehicle _currentVehicle;\n')
     f.write('\t\t\tsleep %d;\n' % cc)
-    f.write('\t\t\t_currentVehicle = "armaNameofVehicle" createVehicle [mapPositionCoordX, mapPositionCoordY, 0];\n')
+    f.write('\t\t\t_currentVehicle = "%s" createVehicle [%d, %d, %d];\n' % (vehicle_name, map_pos[0], map_pos[1], map_pos[2]))
     f.write('\t\t\tcreateVehicleCrew _currentVehicle;\n')
     f.write('\t\t\t_currentVehicle setdir angleface;\n')
     f.write('\t\t\t_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')

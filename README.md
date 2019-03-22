@@ -61,7 +61,7 @@ script in this project to run.
 - Error Code 3: Issue with .sqf file creation
 
 ## Necessary Installations
-Use these commands in the Python terminal to install required
+Use these commands in the Windows terminal to install required
 packages:
 
 ```windows

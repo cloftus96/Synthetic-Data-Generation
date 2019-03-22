@@ -17,14 +17,11 @@
 #    The pixel is designated by using the coordinates within the resolution,
 #    starting from the top left corner of the screen
 #    Examples: (0,0) is the very top left pixel
-#              (950, 540) would be roughly in the middle of the screen on 1920x1080
+#              (960, 540) would be in the middle of the screen on 1920x1080
 #
 #    click - a simple function that just automates a click at the current mouse
 #    coordinate. Default is a right click, the paramater here is added to make it
 #    a left click.
-#
-#    typewrite - simulates typing of the provided string into the current active
-#    window.
 #
 #    More documentation of pyautogui functions can be found at:
 #           https://pyautogui.readthedocs.io/en/latest/
@@ -49,7 +46,7 @@ def main():
     userHeight = GetSystemMetrics(1)
 
     print('')
-    print('Press Ctrl-C at any time in this window to stop.')
+    print('Press Ctrl-C at any time in this window/terminal to stop.')
     print('')
     print('This is your resolution: ' + str(userWidth) + ' x ' + str(userHeight))
     print('')
@@ -65,7 +62,7 @@ def main():
         except FileNotFoundError:
             print('ERROR:')
             print('The path to the Arma3_x64 executable is incorrect for this system. Please change the path in the '
-                  'script to properly reflect the correct path.')
+                  'script or the path to the game to properly reflect the correct path in both places.')
             exit(1)
         else:
             time.sleep(130)
@@ -91,37 +88,60 @@ def main():
 
             time.sleep(60)
 
-            # this click opens the tools menu bar option
-            pyautogui.moveTo(363, 13, 1)
+            # this click opens the scenario menu bar option
+            pyautogui.moveTo(60, 10, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
             time.sleep(1)
 
-            # this click opens the console
-            pyautogui.moveTo(411, 53, 1)
+            # this click hits open (to open the mission open window)
+            pyautogui.moveTo(73, 82, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
             time.sleep(1)
 
-            # type the command to run the txt
-            # this path is tentative. The full script will eventually create this file and place it in THIS path,
-            # so this path SHOULD NOT BE CHANGED.
-            pyautogui.typewrite(r'_handle = player execVM "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf"; ')
-            pyautogui.typewrite('waitUntil {scriptDone _handle};')
-
-            # run the script with a click
-            pyautogui.moveTo(890, 351, 1)
+            # this click physically opens the mission
+            pyautogui.moveTo(963, 716, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
             time.sleep(1)
 
-            # cancel out of the console once the script is run (not done automatically)
-            pyautogui.moveTo(501, 675, 1)
+            # this click opens the play menu bar option
+            pyautogui.moveTo(511, 12, 1)
             time.sleep(1)
             pyautogui.click(button='left')
+
+            time.sleep(3)
+
+            # this click runs the mission in single player
+            pyautogui.moveTo(612, 82, 1)
+            time.sleep(1)
+            pyautogui.click(button='left')
+
+            time.sleep(1)
+
+            # this click gets rid of an automatic error window
+            pyautogui.moveTo(1139, 726, 1)
+            time.sleep(1)
+            pyautogui.click(button='left')
+
+            time.sleep(1)
+
+            # old data method
+            # # run the script with a click
+            # pyautogui.moveTo(890, 351, 1)
+            # time.sleep(1)
+            # pyautogui.click(button='left')
+            #
+            # time.sleep(1)
+            #
+            # # cancel out of the console once the script is run (not done automatically)
+            # pyautogui.moveTo(501, 675, 1)
+            # time.sleep(1)
+            # pyautogui.click(button='left')
 
     # 1920x1080
     elif userWidth == 1920:
@@ -133,7 +153,7 @@ def main():
         except FileNotFoundError:
             print('ERROR:')
             print('The path to the Arma3_x64 executable is incorrect for this system. Please change the path in the '
-                  'script to properly reflect the correct path.')
+                  'script or the path to the game to properly reflect the correct path in both places.')
             exit(1)
         else:
             time.sleep(130)
@@ -159,35 +179,71 @@ def main():
 
             time.sleep(45)
 
-            # this click opens the tools menu bar option
-            pyautogui.moveTo(256, 6, 1)
+            # this click opens the scenario menu bar option
+            pyautogui.moveTo(36, 8, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
             time.sleep(1)
 
-            # this click opens the console
-            pyautogui.moveTo(286, 34, 1)
-            time.sleep(1)
-            pyautogui.click(button='left')
-
-            # type the command to run the txt
-            # this path is tentative. The full script will eventually create this file and place it in THIS path,
-            # so this path SHOULD NOT BE CHANGED.
-            pyautogui.typewrite(r'_handle = player execVM "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf"; ')
-            pyautogui.typewrite('waitUntil {scriptDone _handle};')
-
-            # run the script with a click
-            pyautogui.moveTo(1130, 509, 1)
+            # this click hits open (to open the mission open window)
+            pyautogui.moveTo(78, 58, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
             time.sleep(1)
 
-            # cancel out of the console once the script is run (not done automatically)
-            pyautogui.moveTo(786, 804, 1)
+            # this click physically opens the mission
+            pyautogui.moveTo(1158, 866, 1)
             time.sleep(1)
             pyautogui.click(button='left')
+
+            time.sleep(1)
+
+            # this click opens the play menu bar option
+            pyautogui.moveTo(360, 6, 1)
+            time.sleep(1)
+            pyautogui.click(button='left')
+
+            time.sleep(1)
+
+            # this click runs the mission in single player
+            pyautogui.moveTo(464, 60, 1)
+            time.sleep(1)
+            pyautogui.click(button='left')
+
+            time.sleep(1)
+
+            # this click gets rid of an automatic error window
+            pyautogui.moveTo(1772, 1044, 1)
+            time.sleep(1)
+            pyautogui.click(button='left')
+
+            time.sleep(1)
+
+            # old data method
+            # # this click opens the console
+            # pyautogui.moveTo(286, 34, 1)
+            # time.sleep(1)
+            # pyautogui.click(button='left')
+
+            # # type the command to run the txt
+            # # this path is tentative. The full script will eventually create this file and place it in THIS path,
+            # # so this path SHOULD NOT BE CHANGED.
+            # pyautogui.typewrite(r'_handle = player execVM "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf"; ')
+            # pyautogui.typewrite('waitUntil {scriptDone _handle};')
+            #
+            # # run the script with a click
+            # pyautogui.moveTo(1130, 509, 1)
+            # time.sleep(1)
+            # pyautogui.click(button='left')
+            #
+            # time.sleep(1)
+            #
+            # # cancel out of the console once the script is run (not done automatically)
+            # pyautogui.moveTo(786, 804, 1)
+            # time.sleep(1)
+            # pyautogui.click(button='left')
 
     # if you go into this else block, the user has a resolution that is not supported yet
     # by this script

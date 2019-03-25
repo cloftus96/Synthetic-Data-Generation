@@ -11,7 +11,7 @@ import os
 from pathlib import Path
 
 
-def arma3_script_generator(map_pos, vehicle_name, pos, cc, angle):
+def arma3_script_generator(map_pos, vehicle_name, fog_increment, time_increment, pos, cc, angle):
 
     try:
         # f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+") # original
@@ -66,12 +66,12 @@ def arma3_script_generator(map_pos, vehicle_name, pos, cc, angle):
     f.write('\t\t\t\t_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')
     f.write('\t\t\t\tsleep %d;\n' % cc)
     f.write('\t\t\t};\n')
-    f.write('\t\tfogvalue = fogvalue + .2;\n')
+    f.write('\t\tfogvalue = fogvalue + %d;\n' % fog_increment)
     f.write('\t\t1 setFog fogvalue;\n')
     f.write('\t\tsleep %d;\n' % cc)
     f.write('\t\tangleface = 0;\n')
     f.write('\t\t};\n')
-    f.write('\ttimevalue = timevalue + 4;\n')
+    f.write('\ttimevalue = timevalue + %d;\n' % time_increment)
     f.write('\tskipTime (timevalue - daytime + 24 ) % 24;\n')
     f.write('\t0 setFog 0;\n')
     f.write('\t0 setOvercast 0;\n')

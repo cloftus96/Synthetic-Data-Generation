@@ -16,7 +16,7 @@ def position_generator(angle_step, x_init, rota_angle_step):
 
 def generate_script(pos_array, rota_angle_step):
     default_cc = 2
-    Basic_Script_Writing.script(pos_array, default_cc, rota_angle_step)
+    Basic_Script_Writing.arma3_script_generator(pos_array, default_cc, rota_angle_step)
 
 
 if __name__ == "__main__":

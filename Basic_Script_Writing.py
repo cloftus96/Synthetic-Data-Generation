@@ -10,10 +10,12 @@
 import os
 from pathlib import Path
 
+
 def arma3_script_generator(map_pos, vehicle_name, pos, cc, angle):
 
     try:
-        f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+")
+        # f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+") # original
+        f = open(str(Path(os.expanduser('~\\Documents\\Arma 3\\missions\\DataGeneration.Altis\\Data_Generator.sqf'))), 'w+')
     except Exception:
         print('ERROR:')
         print('Issue opening the Data_Generator.sqf file. See arma3_script_generator function.')
@@ -79,8 +81,9 @@ def create_mission_dir():
     """
     missionsFolder = Path(os.path.expanduser('~\\Documents\\Arma 3\\missions'))
     customMission = Path(str(missionsFolder) + '\\DataGeneration.Altis')
+    print(customMission)
     if not customMission.exists():
-        os.mkdir(customMission, 0o777)
+        os.makedirs(customMission, 0o777)
     initfilepath = Path(str(customMission) + '\\init.sqf')
     missionfilepath = Path(str(customMission) + '\\mission.sqm')
 
@@ -91,25 +94,25 @@ def create_mission_dir():
 
     # write the mission.sqm file
     missionfile = open(missionfilepath, "w+")
-    missionfile.write('version=53')
-    missionfile.write('class EditorData')
-    missionfile.write('{')
-    missionfile.write('\tmoveGridStep=1;')
-    missionfile.write('\tangleGridStep=0.2617994;')
-    missionfile.write('\tscaleGridStep=1;')
-    missionfile.write('\tautoGroupingDist=10;')
-    missionfile.write('\ttoggles=1;')
-    missionfile.write('\tclass Camera')
-    missionfile.write('\t{')
-    missionfile.write('\t\tpos[]={14305.279,24.621294,17587.59};')
-    missionfile.write('\t\tdir[]={-0.31484151,-0.17364819,-0.93312436};')
-    missionfile.write('\t\tup[]={-0.055515055,0.98480767,-0.164535};')
-    missionfile.write('\t\taside[]={-0.94751924,0,0.31969842};')
-    missionfile.write('\t};')
-    missionfile.write('};')
-    missionfile.write('binarizationWanted=0;')
-    missionfile.write('class AddonsMetaData')
-    missionfile.write('{\n};')
-    missionfile.write('randomSeed=8484358;')
-    missionfile.write('class ScenarioData')
+    missionfile.write('version=53;\n')
+    missionfile.write('class EditorData\n')
+    missionfile.write('{\n')
+    missionfile.write('\tmoveGridStep=1;\n')
+    missionfile.write('\tangleGridStep=0.2617994;\n')
+    missionfile.write('\tscaleGridStep=1;\n')
+    missionfile.write('\tautoGroupingDist=10;\n')
+    missionfile.write('\ttoggles=1;\n')
+    missionfile.write('\tclass Camera\n')
+    missionfile.write('\t{\n')
+    missionfile.write('\t\tpos[]={14305.279,24.621294,17587.59};\n')
+    missionfile.write('\t\tdir[]={-0.31484151,-0.17364819,-0.93312436};\n')
+    missionfile.write('\t\tup[]={-0.055515055,0.98480767,-0.164535};\n')
+    missionfile.write('\t\taside[]={-0.94751924,0,0.31969842};\n')
+    missionfile.write('\t};\n')
+    missionfile.write('};\n')
+    missionfile.write('binarizationWanted=0;\n')
+    missionfile.write('class AddonsMetaData\n')
+    missionfile.write('{\n};\n')
+    missionfile.write('randomSeed=8484358;\n')
+    missionfile.write('class ScenarioData\n')
     missionfile.write('{\n\tauthor="";\n};')

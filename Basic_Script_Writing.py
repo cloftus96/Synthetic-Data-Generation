@@ -84,9 +84,16 @@ def arma3_script_generator(map_pos, vehicle_name, pos, cc, angle):
 
 
 def create_mission_dir():
-    """ This function creates the directory and files necessary to run our script as a mission. This includes putting
+    """
+        function name: create_mission_dir
+
+        details: This function creates the directory and files necessary to run our script as a mission. This includes putting
     a new folder in the default Arma 3 missions folder, as well as providing a default mission file and an init file
-    that points to our script (this causes our script to run immediately upon playing the mission. """
+    that points to our script (this causes our script to run immediately upon playing the mission.
+
+        parameters: none
+
+    """
     missionsFolder = Path(os.path.expanduser('~\\Documents\\Arma 3\\missions'))
     customMission = Path(str(missionsFolder) + '\\DataGeneration.Altis')
     print(customMission)

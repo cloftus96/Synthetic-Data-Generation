@@ -3,7 +3,7 @@ import Basic_Script_Writing
 import sys
 
 
-def position_generator(angle_step, x_init, rota_angle_step):
+def position_generator(angle_step, x_init):
     # maybe do error/type checking on the inputs later...
     curr_angle = 0
     # default_cc = 2  # can take this as an argument if we want ||| removed for now
@@ -14,9 +14,9 @@ def position_generator(angle_step, x_init, rota_angle_step):
     return pos_array
 
 
-def generate_script(pos_array, rota_angle_step):
+def generate_script(map_pos, vehicle_name, fog_increment, time_increment, pos_array, rota_angle_step):
     default_cc = 2
-    Basic_Script_Writing.arma3_script_generator(pos_array, default_cc, rota_angle_step)
+    Basic_Script_Writing.arma3_script_generator(map_pos, vehicle_name, fog_increment, time_increment, pos_array, default_cc, rota_angle_step)
 
 
 if __name__ == "__main__":

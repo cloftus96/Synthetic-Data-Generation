@@ -15,7 +15,7 @@ def arma3_script_generator(map_pos, vehicle_name, fog_increment, time_increment,
 
     try:
         # f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+") # original
-        f = open(str(Path(os.expanduser('~\\Documents\\Arma 3\\missions\\DataGeneration.Altis\\Data_Generator.sqf'))), 'w+')
+        f = open(str(Path(os.expanduser('~\\Documents\\Arma 3\\missions\\DataGeneration.Altis\\briefing.sqf'))), 'w+')
     except Exception:
         print('ERROR:')
         print('Issue opening the Data_Generator.sqf file. See arma3_script_generator function.')
@@ -104,7 +104,7 @@ def create_mission_dir():
 
     # write the init.sqf file
     initfile = open(initfilepath, "w+")
-    initfile.write('execVM "Data_Generator.sqf";')
+    initfile.write('execVM "briefing.sqf";')
     initfile.close()
 
     # write the mission.sqm file

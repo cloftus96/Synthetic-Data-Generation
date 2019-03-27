@@ -15,7 +15,7 @@ def arma3_script_generator(map_pos, vehicle_name, pos, cc, angle):
 
     try:
         # f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+") # original
-        f = open(str(Path(os.expanduser('~\\Documents\\Arma 3\\missions\\DataGeneration.Altis\\Data_Generator.sqf'))), 'w+')
+        f = open(str(Path(os.path.expanduser('~\\Documents\\Arma 3\\missions\\DataGeneration.Altis\\Data_Generator.sqf'))), 'w+')
     except Exception:
         print('ERROR:')
         print('Issue opening the Data_Generator.sqf file. See arma3_script_generator function.')

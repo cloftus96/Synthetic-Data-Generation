@@ -107,28 +107,26 @@ def main():
             time.sleep(1)
             pyautogui.click(button='left')
 
-            time.sleep(1)
+            time.sleep(5)
 
             # this click opens the play menu bar option
             pyautogui.moveTo(511, 12, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
-            time.sleep(3)
+            time.sleep(1)
 
             # this click runs the mission in single player
             pyautogui.moveTo(612, 82, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
-            time.sleep(1)
+            time.sleep(5)
 
             # this click gets rid of an automatic error window
             pyautogui.moveTo(1139, 726, 1)
             time.sleep(1)
             pyautogui.click(button='left')
-
-            time.sleep(1)
 
             # old data method
             # # run the script with a click
@@ -177,7 +175,7 @@ def main():
             time.sleep(1)
             pyautogui.click(button='left')
 
-            time.sleep(45)
+            time.sleep(60)
 
             # this click opens the scenario menu bar option
             pyautogui.moveTo(36, 8, 1)
@@ -198,7 +196,7 @@ def main():
             time.sleep(1)
             pyautogui.click(button='left')
 
-            time.sleep(1)
+            time.sleep(5)
 
             # this click opens the play menu bar option
             pyautogui.moveTo(360, 6, 1)
@@ -212,14 +210,12 @@ def main():
             time.sleep(1)
             pyautogui.click(button='left')
 
-            time.sleep(1)
+            time.sleep(5)
 
             # this click gets rid of an automatic error window
             pyautogui.moveTo(1772, 1044, 1)
             time.sleep(1)
             pyautogui.click(button='left')
-
-            time.sleep(1)
 
             # old data method
             # # this click opens the console

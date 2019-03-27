@@ -11,11 +11,11 @@ import os
 from pathlib import Path
 
 
-def arma3_script_generator(map_pos, vehicle_name, pos, cc, angle):
+def arma3_script_generator(map_pos, vehicle_name, fog_increment, time_increment, pos, cc, angle):
 
     try:
         # f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+") # original
-        f = open(str(Path(os.path.expanduser('~\\Documents\\Arma 3\\missions\\DataGeneration.Altis\\briefing.sqf'))), 'w+')
+        f = open(str(Path(os.expanduser('~\\Documents\\Arma 3\\missions\\DataGeneration.Altis\\Data_Generator.sqf'))), 'w+')
     except Exception:
         print('ERROR:')
         print('Issue opening the Data_Generator.sqf file. See arma3_script_generator function.')
@@ -23,6 +23,10 @@ def arma3_script_generator(map_pos, vehicle_name, pos, cc, angle):
 
     f.write('0 = [] spawn\n')
     f.write('{\n')
+    f.write('skipTime (6 - daytime + 24 ) % 24;\n')
+    f.write('0 setFog 0;\n')
+    f.write('0 setOvercast 0;\n')
+    f.write('0 setRain 0;\n')
     f.write('_currentVehicle = "%s" createVehicle [%d, %d, %d];\n' % (vehicle_name, map_pos[0], map_pos[1], map_pos[2]))
     f.write('createVehicleCrew _currentVehicle;\n')
     f.write('_currentVehicle setdir 0;\n')
@@ -32,37 +36,48 @@ def arma3_script_generator(map_pos, vehicle_name, pos, cc, angle):
     f.write('cam cameraEffect ["INTERNAL", "BACK"];\n\n')
     f.write('angleface = 0;\n')
     f.write('fogvalue = 0;\n')
+    f.write('timevalue = 6;\n')
     f.write('angle = %d;\n\n' % angle)
     # top loop vehicle positions
     # next is vehicles
     # next is environments (fog, rain, time of day)
     # last is angles
-    f.write('\twhile {fogvalue < .8} do\n')
+    f.write('\twhile {timevalue < 19.5} do\n')
     f.write('\t{\n')
-    f.write('\t\twhile {angleface < 360} do\n')
+    f.write('\t\twhile {fogvalue < .8} do\n')
     f.write('\t\t{\n')
+    f.write('\t\t\twhile {angleface < 360} do\n')
+    f.write('\t\t\t{\n')
 
     for idx, val in enumerate(pos):
-        f.write('\t\t\tpos%d = pos%d vectorAdd [%d,%d,%d];\n' % (idx + 2, idx + 1, pos[idx][0], pos[idx][1], pos[idx][2]))
-        f.write('\t\t\tcam camSetPos pos%s;\n' % str(int(idx)+2))
-        f.write('\t\t\tcam camSetTarget _currentVehicle;\n')
-        f.write('\t\t\tcam camCommit %d;\n' % cc)
-        f.write('\t\t\twaitUntil {camCommitted cam};\n')
-        f.write('\t\t\tscreenshot "arma3screenshot.png";\n\n')
-    f.write('\t\t\tangleface = angleface+angle;\n')
-    f.write('\t\t\t{_currentVehicle deleteVehicleCrew _x} forEach crew _currentVehicle;\n')
-    f.write('\t\t\tdeleteVehicle _currentVehicle;\n')
-    f.write('\t\t\tsleep %d;\n' % cc)
-    f.write('\t\t\t_currentVehicle = "%s" createVehicle [%d, %d, %d];\n' % (vehicle_name, map_pos[0], map_pos[1], map_pos[2]))
-    f.write('\t\t\tcreateVehicleCrew _currentVehicle;\n')
-    f.write('\t\t\t_currentVehicle setdir angleface;\n')
-    f.write('\t\t\t_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')
-    f.write('\t\t\tsleep %d;\n' % cc)
+        f.write('\t\t\t\tpos%d = pos%d vectorAdd [%d,%d,%d];\n' % (idx + 2, idx +1, pos[idx][0], pos[idx][1], pos[idx][2]))
+        f.write('\t\t\t\tcam camSetPos pos%s;\n' % str(int(idx)+2))
+        f.write('\t\t\t\tcam camSetTarget _currentVehicle;\n')
+        f.write('\t\t\t\tcam camCommit %d;\n' % cc)
+        f.write('\t\t\t\twaitUntil {camCommitted cam};\n')
+        f.write('\t\t\t\tscreenshot "arma3screenshot.png";\n\n')
+    f.write('\t\t\t\tangleface = angleface+angle;\n')
+    f.write('\t\t\t\t{_currentVehicle deleteVehicleCrew _x} forEach crew _currentVehicle;\n')
+    f.write('\t\t\t\tdeleteVehicle _currentVehicle;\n')
+    f.write('\t\t\t\tsleep %d;\n' % cc)
+    f.write('\t\t\t\t_currentVehicle = "%s" createVehicle [%d, %d, %d];\n' % (vehicle_name, map_pos[0], map_pos[1], map_pos[2]))
+    f.write('\t\t\t\tcreateVehicleCrew _currentVehicle;\n')
+    f.write('\t\t\t\t_currentVehicle setdir angleface;\n')
+    f.write('\t\t\t\t_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')
+    f.write('\t\t\t\tsleep %d;\n' % cc)
+    f.write('\t\t\t};\n')
+    f.write('\t\tfogvalue = fogvalue + %d;\n' % fog_increment)
+    f.write('\t\t1 setFog fogvalue;\n')
+    f.write('\t\tsleep %d;\n' % cc)
+    f.write('\t\tangleface = 0;\n')
     f.write('\t\t};\n')
-    f.write('\tfogvalue = fogvalue + .2;\n')
-    f.write('\t1 setfog fogvalue;\n')
+    f.write('\ttimevalue = timevalue + %d;\n' % time_increment)
+    f.write('\tskipTime (timevalue - daytime + 24 ) % 24;\n')
+    f.write('\t0 setFog 0;\n')
+    f.write('\t0 setOvercast 0;\n')
+    f.write('\t0 setRain 0;\n')
+    f.write('\tfogvalue = 0;\n')
     f.write('\tsleep %d;\n' % cc)
-    f.write('\tangleface = 0;\n')
     f.write('\t};\n')
     f.write('};\n')
     f.close()
@@ -89,7 +104,7 @@ def create_mission_dir():
 
     # write the init.sqf file
     initfile = open(initfilepath, "w+")
-    initfile.write('execVM "briefing.sqf";')
+    initfile.write('execVM "Data_Generator.sqf";')
     initfile.close()
 
     # write the mission.sqm file

@@ -1,12 +1,7 @@
-import multiprocessing as mp
 import os.path
 from pathlib import Path
-import sys
 import time
 import shutil
-# import our functions
-import Arma_3_PyAutoGUI
-import main_script_generator
 
 
 def image_file_mover(check_delay):

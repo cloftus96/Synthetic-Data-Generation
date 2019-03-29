@@ -14,8 +14,7 @@ from pathlib import Path
 def arma3_script_generator(map_pos, vehicle_name, fog_increment, time_increment, pos, cc, angle):
 
     try:
-        # f = open('C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf', "w+") # original
-        f = open(str(Path(os.path.expanduser('~\\Documents\\Arma 3\\missions\\DataGeneration.Altis\\briefing.sqf'))), 'w+')
+        f = open(str(Path(os.path.expanduser('~\\Documents\\Arma 3\\missions\\DataGeneration.Stratis\\briefing.sqf'))), 'w+')
     except Exception:
         print('ERROR:')
         print('Issue opening the Data_Generator.sqf file. See arma3_script_generator function.')
@@ -50,7 +49,7 @@ def arma3_script_generator(map_pos, vehicle_name, fog_increment, time_increment,
     f.write('\t\t\t{\n')
 
     for idx, val in enumerate(pos):
-        f.write('\t\t\t\tpos%d = pos%d vectorAdd [%d,%d,%d];\n' % (idx + 2, idx +1, pos[idx][0], pos[idx][1], pos[idx][2]))
+        f.write('\t\t\t\tpos%d = pos%d vectorAdd [%d,%d,%d];\n' % (idx + 2, idx + 1, pos[idx][0], pos[idx][1], pos[idx][2]))
         f.write('\t\t\t\tcam camSetPos pos%s;\n' % str(int(idx)+2))
         f.write('\t\t\t\tcam camSetTarget _currentVehicle;\n')
         f.write('\t\t\t\tcam camCommit %d;\n' % cc)
@@ -95,7 +94,7 @@ def create_mission_dir():
 
     """
     missionsFolder = Path(os.path.expanduser('~\\Documents\\Arma 3\\missions'))
-    customMission = Path(str(missionsFolder) + '\\DataGeneration.Altis')
+    customMission = Path(str(missionsFolder) + '\\DataGeneration.Stratis')
     print(customMission)
     if not customMission.exists():
         os.makedirs(customMission, 0o777)

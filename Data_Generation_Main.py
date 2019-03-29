@@ -43,7 +43,7 @@ if __name__ == '__main__':
     """
     # Use Abstract Syntax Tree to evaluate tuples and lists in cmd line args
     map_pos = ast.literal_eval(sys.argv[1])
-    vehicle_names = ast.literal_eval(sys.argv[2])
+    vehicle_names = sys.argv[2] # will need to be ast.literal_eval(sys.argv[2]) when we get multiple vehicle support
     cam_rota_angle_step = float(sys.argv[3])
     vehicle_rota_angle_step = float(sys.argv[4])
     cam_delay = float(sys.argv[5])

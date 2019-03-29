@@ -107,7 +107,7 @@ def main():
             time.sleep(1)
             pyautogui.click(button='left')
 
-            time.sleep(5)
+            time.sleep(20)
 
             # this click opens the play menu bar option
             pyautogui.moveTo(511, 12, 1)
@@ -196,7 +196,7 @@ def main():
             time.sleep(1)
             pyautogui.click(button='left')
 
-            time.sleep(5)
+            time.sleep(20)
 
             # this click opens the play menu bar option
             pyautogui.moveTo(360, 6, 1)

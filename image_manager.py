@@ -21,7 +21,7 @@ def image_file_mover(check_delay):
     while not done:
         screenshot = Path(str(screenshot_path) + '\\arma3screenshot.png')
         if screenshot.exists() and not screenshot.is_dir():
-            #time.sleep(.2) # may or may not need this...
+            time.sleep(.2) # may or may not need this...
             # shutil.move(screenshot, Path(os.path.expanduser(output_dir, '\\', str(img_ctr), '.png')))
             shutil.move(screenshot, Path(os.path.expanduser('~\\Documents\\SyntheticDataGen\\' + str(img_ctr) + '.png')))
             img_ctr += 1  # increment the image counter after a successful move

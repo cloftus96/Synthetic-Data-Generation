@@ -6,12 +6,16 @@ import ast
 import time
 import shutil
 # import our functions
+import Basic_Script_Writing
 import Arma_3_PyAutoGUI
 import main_script_generator
 import image_manager
 
 
 def main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, cam_delay, cam_x_offset, fog_incr, time_incr):
+    # generate the necessary directory
+    Basic_Script_Writing.create_mission_dir()
+
     # generate script
     position_array = main_script_generator.position_generator(cam_rota_angle_step, cam_x_offset)
     main_script_generator.generate_script(map_pos, vehicle_names, fog_incr, time_incr, position_array, vehicle_rota_angle_step)

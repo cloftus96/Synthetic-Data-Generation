@@ -49,7 +49,7 @@ def arma3_script_generator(map_pos, vehicle_name, fog_increment, time_increment,
     f.write('\t\t\t{\n')
 
     for idx, val in enumerate(pos):
-        f.write('\t\t\t\tpos%d = pos%d vectorAdd [%d,%d,%d];\n' % (idx + 2, idx + 1, pos[idx][0], pos[idx][1], pos[idx][2]))
+        f.write('\t\t\t\tpos%d = pos1 vectorAdd [%d,%d,%d];\n' % (idx + 2, pos[idx][0], pos[idx][1], pos[idx][2]))
         f.write('\t\t\t\tcam camSetPos pos%s;\n' % str(int(idx)+2))
         f.write('\t\t\t\tcam camSetTarget _currentVehicle;\n')
         f.write('\t\t\t\tcam camCommit %d;\n' % cc)

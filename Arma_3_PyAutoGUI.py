@@ -163,14 +163,14 @@ def main():
 
             time.sleep(3)
 
-            # this clicks on the map "Altis"
+            # this clicks on the map "Stratis"
             pyautogui.moveTo(692, 295, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
             time.sleep(1)
 
-            # this clicks on the confirm button to load Altis
+            # this clicks on the confirm button to load Stratis
             pyautogui.moveTo(1262, 808, 1)
             time.sleep(1)
             pyautogui.click(button='left')
@@ -199,14 +199,14 @@ def main():
             time.sleep(20)
 
             # this click opens the play menu bar option
-            pyautogui.moveTo(360, 6, 1)
+            pyautogui.moveTo(363, 6, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
             time.sleep(1)
 
             # this click runs the mission in single player
-            pyautogui.moveTo(464, 60, 1)
+            pyautogui.moveTo(385, 52, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 

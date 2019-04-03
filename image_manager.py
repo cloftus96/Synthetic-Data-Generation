@@ -26,8 +26,15 @@ def image_file_mover(check_delay):
             while not img_moved:
                 try:
                     shutil.move(screenshot, Path(os.path.expanduser('~\\Documents\\SyntheticDataGen\\' + str(img_ctr) + '.png')))
+                except OSError as e:
+                    if e.errno == 13:
+                        # print('File move error caught with OSError.errno 13') #  for debugging
+                        continue
+                    # raise the exception if it is not this particular error
+                    raise
+                # explicitly raise any other exception type
                 except Exception:
-                    continue  # just try to move until it works
+                    raise
                 img_moved = True
             img_ctr += 1  # increment the image counter after a successful move
         time.sleep(check_delay)  # sleep for check_delay seconds so we don't hammer the cpu unnecessarily

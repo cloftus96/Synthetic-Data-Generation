@@ -29,6 +29,9 @@ def image_file_mover(check_delay):
                 except OSError as e:
                     if e.errno == 13:
                         # print('File move error caught with OSError.errno 13') #  for debugging
+                        # This sleep could be 0.2 secs but I don't want to use this high a sleep time.
+                        # Could be an issue if the user makes the camera rotation time too low
+                        time.sleep(0.1)
                         continue
                     # raise the exception if it is not this particular error
                     raise

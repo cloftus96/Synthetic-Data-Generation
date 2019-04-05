@@ -91,3 +91,21 @@ install pyautogui
 install pypiwin32
 ```
 
+## Examples
+Here are some examples of the data that this script creates:
+
+![Example 1 from Factory.](https://github.com/cloftus96/Synthetic-Data-Generation/blob/Image-Processing/Example_1_Factory.png "Example 1 from Factory")
+
+![Example 2 from Desert.](https://github.com/cloftus96/Synthetic-Data-Generation/blob/Image-Processing/Example_2_Desert.png "Example 2 from Desert")
+
+Here is one example of the image processing the script does
+to generate the location of the vehicle. It first takes a
+regular image, and then makes a copy of it without the vehicle.
+It then compares the two to find the spot where the vehicle is:
+
+![Picture with vehicle.](https://github.com/cloftus96/Synthetic-Data-Generation/blob/Image-Processing/im3.jpg "Picture with Vehicle")
+
+![Picture without vehicle.](https://github.com/cloftus96/Synthetic-Data-Generation/blob/Image-Processing/im2.jpg "Picture without Vehicle")
+
+![Picture Comparison.](https://github.com/cloftus96/Synthetic-Data-Generation/blob/Image-Processing/comp.jpg "Picture Comparison")
+

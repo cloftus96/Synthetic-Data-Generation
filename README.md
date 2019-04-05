@@ -37,9 +37,6 @@ of the launcher, and if the game or Steam is not updated,
 not only will the sleep times be off due to updates, but the
 executable file will just load the launcher, which will not
 work.
-- This project uses Python scripts. The python 3.7 interpreter
-must be installed on the system in order for the the main
-script in this project to run.
 - Before running this project, run the game Arma 3 once
 beforehand, and ensure two things:
     - all necessary licenses have been accepted.

@@ -1,10 +1,7 @@
 import multiprocessing as mp
-import os.path
-from pathlib import Path
+import os
 import sys
 import ast
-import time
-import shutil
 # import our functions
 import Basic_Script_Writing
 import Arma_3_PyAutoGUI
@@ -26,6 +23,10 @@ def main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, c
 
     # once we have the script, run the game and execute the script within it
     Arma_3_PyAutoGUI.main()
+
+    # this section will wait for the screenshots to end, then kill Arma, and end this script
+    # insert wait here
+    # os.system("TASKKILL /F /IM arma3_x64.exe")
 
 
 if __name__ == '__main__':

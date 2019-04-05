@@ -1,13 +1,13 @@
 #*********************************************************************************
 #
-# HOW TO OPEN THE COMMAND WINDOW IN ARMA 3 USING PYAUTOGUI
+# HOW TO RUN A MISSION IN ARMA 3 USING PYAUTOGUI
 #
 # MAKE SURE THAT THE PATH IN THE subprocess COMMAND IS IDENTICAL
 # TO THAT OF YOUR OWN ARMA 3 64 BIT EXECUTABLE
 #
 # This script opens the game Arma 3 and uses simulated clicks to navigate
-# to the console and open it. It then types a command into the console
-# which runs any Arma 3 script you would like
+# through the Arma 3 UI into the editor. It then loads up the first mission
+# listed in the \missions folder
 #
 #*********************************************************************************
 #
@@ -20,7 +20,7 @@
 #              (960, 540) would be in the middle of the screen on 1920x1080
 #
 #    click - a simple function that just automates a click at the current mouse
-#    coordinate. Default is a right click, the paramater here is added to make it
+#    coordinate. Default is a right click, the parameter here is added to make it
 #    a left click.
 #
 #    More documentation of pyautogui functions can be found at:
@@ -51,21 +51,22 @@ def main():
     print('This is your resolution: ' + str(userWidth) + ' x ' + str(userHeight))
     print('')
 
-    # check the users resolution and go to his/her respective coordinates
-    # 1366x768
-    if userWidth == 1366:
+    # open the game and sleep to wait for the game to open
+    # before running, change this path to the Arma3_64.exe file on your own computer
+    try:
+        subprocess.Popen(['C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Arma3_x64.exe'])
+    except FileNotFoundError:
+        print('ERROR:')
+        print('The path to the Arma3_x64 executable is incorrect for this system. Please change the path in the '
+              'script or the path to the game to properly reflect the correct path in both places.')
+        exit(1)
+    else:
+        # give the game time to open
+        time.sleep(130)
 
-        # open the game and sleep to wait for the game to open
-        # before running, change this path to the Arma3_64.exe file on your own computer
-        try:
-            subprocess.Popen(['C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Arma3_x64.exe'])
-        except FileNotFoundError:
-            print('ERROR:')
-            print('The path to the Arma3_x64 executable is incorrect for this system. Please change the path in the '
-                  'script or the path to the game to properly reflect the correct path in both places.')
-            exit(1)
-        else:
-            time.sleep(130)
+        # check the users resolution and go to his/her respective coordinates
+        # 1366x768
+        if userWidth == 1366:
 
             # this click will open the editor map select screen
             pyautogui.moveTo(1020, 364, 1)
@@ -74,14 +75,14 @@ def main():
 
             time.sleep(3)
 
-            # this clicks on the map "Altis"
+            # this clicks on the map "Stratis"
             pyautogui.moveTo(375, 126, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
             time.sleep(1)
 
-            # this clicks on the confirm button to load Altis
+            # this clicks on the confirm button to load Stratis
             pyautogui.moveTo(1021, 672, 1)
             time.sleep(1)
             pyautogui.click(button='left')
@@ -95,7 +96,7 @@ def main():
 
             time.sleep(1)
 
-            # this click hits open (to open the mission open window)
+            # click open (to open the mission open window)
             pyautogui.moveTo(73, 82, 1)
             time.sleep(1)
             pyautogui.click(button='left')
@@ -107,7 +108,7 @@ def main():
             time.sleep(1)
             pyautogui.click(button='left')
 
-            time.sleep(5)
+            time.sleep(20)
 
             # this click opens the play menu bar option
             pyautogui.moveTo(511, 12, 1)
@@ -128,33 +129,8 @@ def main():
             time.sleep(1)
             pyautogui.click(button='left')
 
-            # old data method
-            # # run the script with a click
-            # pyautogui.moveTo(890, 351, 1)
-            # time.sleep(1)
-            # pyautogui.click(button='left')
-            #
-            # time.sleep(1)
-            #
-            # # cancel out of the console once the script is run (not done automatically)
-            # pyautogui.moveTo(501, 675, 1)
-            # time.sleep(1)
-            # pyautogui.click(button='left')
-
-    # 1920x1080
-    elif userWidth == 1920:
-
-        # open the game and sleep to wait for the game to open
-        # before running, change this path to the Arma3_64.exe file on your own computer
-        try:
-            subprocess.Popen(['C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\arma3_x64.exe'])
-        except FileNotFoundError:
-            print('ERROR:')
-            print('The path to the Arma3_x64 executable is incorrect for this system. Please change the path in the '
-                  'script or the path to the game to properly reflect the correct path in both places.')
-            exit(1)
-        else:
-            time.sleep(130)
+        # 1920x1080
+        elif userWidth == 1920:
 
             # this click will open the editor map select screen
             pyautogui.moveTo(1302, 598, 1)
@@ -163,14 +139,14 @@ def main():
 
             time.sleep(3)
 
-            # this clicks on the map "Altis"
+            # this clicks on the map "Stratis"
             pyautogui.moveTo(692, 295, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
             time.sleep(1)
 
-            # this clicks on the confirm button to load Altis
+            # this clicks on the confirm button to load Stratis
             pyautogui.moveTo(1262, 808, 1)
             time.sleep(1)
             pyautogui.click(button='left')
@@ -196,17 +172,17 @@ def main():
             time.sleep(1)
             pyautogui.click(button='left')
 
-            time.sleep(5)
+            time.sleep(20)
 
             # this click opens the play menu bar option
-            pyautogui.moveTo(360, 6, 1)
+            pyautogui.moveTo(363, 6, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
             time.sleep(1)
 
             # this click runs the mission in single player
-            pyautogui.moveTo(464, 60, 1)
+            pyautogui.moveTo(385, 52, 1)
             time.sleep(1)
             pyautogui.click(button='left')
 
@@ -217,38 +193,14 @@ def main():
             time.sleep(1)
             pyautogui.click(button='left')
 
-            # old data method
-            # # this click opens the console
-            # pyautogui.moveTo(286, 34, 1)
-            # time.sleep(1)
-            # pyautogui.click(button='left')
-
-            # # type the command to run the txt
-            # # this path is tentative. The full script will eventually create this file and place it in THIS path,
-            # # so this path SHOULD NOT BE CHANGED.
-            # pyautogui.typewrite(r'_handle = player execVM "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Data_Generator.sqf"; ')
-            # pyautogui.typewrite('waitUntil {scriptDone _handle};')
-            #
-            # # run the script with a click
-            # pyautogui.moveTo(1130, 509, 1)
-            # time.sleep(1)
-            # pyautogui.click(button='left')
-            #
-            # time.sleep(1)
-            #
-            # # cancel out of the console once the script is run (not done automatically)
-            # pyautogui.moveTo(786, 804, 1)
-            # time.sleep(1)
-            # pyautogui.click(button='left')
-
-    # if you go into this else block, the user has a resolution that is not supported yet
-    # by this script
-    # i.e. the coordinates have not been found for each click for that specific resolution
-    else:
-        print('ERROR:')
-        print('Your resolution is currently unsupported by this script. Please re-run the script using')
-        print('one of the supported resolutions.')
-        exit(2)
+        # if you go into this else block, the user has a resolution that is not supported yet
+        # by this script
+        # i.e. the coordinates have not been found for each click for that specific resolution
+        else:
+            print('ERROR:')
+            print('Your resolution is currently unsupported by this script. Please re-run the script using')
+            print('one of the supported resolutions. These can be found in the README of the project.')
+            exit(2)
 
 
 if __name__ == '__main__':

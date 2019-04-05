@@ -28,6 +28,9 @@ Python then closes the game and exits.
 
 ### Notes
 In order for the script to work correctly:
+- Python 3.7 must be installed, preferably to the path %HOMEDIRECTORY%\Python37.
+    - This is the version that the script was tested on. The
+    script is not guaranteed to work on any other version.
 - The game Arma 3 **AND** Steam must **BOTH** be installed **and** updated. 
 This script opens the game directly from the executable instead 
 of the launcher, and if the game or Steam is not updated, 
@@ -80,9 +83,20 @@ Use these commands in the Windows terminal to install required
 packages:
 
 ```windows
-pip install pyautogui
-pip install pypiwin32
+python -m pip install pyautogui
+python -m pip install pypiwin32
 ```
+
+It is recommended to run this command before you install 
+these two packages:
+
+```windows
+python -m pip install --upgrade pip
+```
+
+*Note: depending on where your python is installed or what
+exact version you have, you may need to use the command "py"
+instead of "python."*
 
 If you have the python terminal open instead, use these commands:
 

@@ -63,7 +63,7 @@ for this project.
 More resolutions may be added in the future.
 - The script moves the screenshots to this folder:
 
-    %HOMEDIRECTORY%\Users\%MainUser%\Documents\SyntheticDataGen
+    %HOMEDIRECTORY%\Users\\%MainUser%\Documents\SyntheticDataGen
 
   Ensure before running the project that this directory is either
   empty or non-existant.

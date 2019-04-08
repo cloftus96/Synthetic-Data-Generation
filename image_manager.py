@@ -34,10 +34,18 @@ def image_file_mover(check_delay):
                         time.sleep(0.1)
                         continue
                     # raise the exception if it is not this particular error
-                    raise
+                    print('ERROR:')
+                    print('The image file mover process has encountered some unknown error. Please restart the script.')
+                    print('See the python error description here:')
+                    print(e)
+                    exit(4)
                 # explicitly raise any other exception type
-                except Exception:
-                    raise
+                except Exception as weirdE:
+                    print('ERROR:')
+                    print('The image file mover process has encountered some unknown error. Please restart the script.')
+                    print('See the python error description here:')
+                    print(weirdE)
+                    exit(4)
                 img_moved = True
             img_ctr += 1  # increment the image counter after a successful move
         time.sleep(check_delay)  # sleep for check_delay seconds so we don't hammer the cpu unnecessarily

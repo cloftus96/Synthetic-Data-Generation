@@ -102,6 +102,16 @@ install pyautogui
 install pypiwin32
 ```
 
+## Custom Vehicles
+Follow these steps if you would like to use custom vehicles
+with this script instead of default vehicles:
+
+1. Open Steam and click on Library
+2. Click Tools in the drop down menu
+3. Scroll to the top (if necessary) and install "Arma 3 Tools"
+and "Arma 3 Samples" by double clicking on them.
+4. 
+
 ## Examples
 Here are some examples of the data that this script creates:
 
@@ -118,5 +128,5 @@ It then compares the two to find the spot where the vehicle is:
 
 ![Picture without vehicle.](https://github.com/cloftus96/Synthetic-Data-Generation/blob/Image-Processing/im2.jpg "Picture without Vehicle")
 
-![Picture Comparison.](https://github.com/cloftus96/Synthetic-Data-Generation/blob/Image-Processing/comp.jpg "Picture Comparison")
+![Picture Comparison.](https://github.com/cloftus96/Synthetic-Data-Generation/blob/Arma3_Script_Writing/Car_Point_Cloud.jpg "Picture Comparison")
 

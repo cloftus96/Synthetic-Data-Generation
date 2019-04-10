@@ -127,9 +127,82 @@ and accept any windows that pop up.
     or any other data that you want to save, look into backing
     it up before doing this.
 8. While the game data is extracting, click on "Mount the work drive (P)"
-and then run, accepting any appearing text boxes. Both of these
-may take awhile.
-9. 
+and then run, accepting any appearing text boxes.
+    1. Do this while Extract Game Data runs in the background,
+    as Extract Game Data may take 30 mins to an hour or even 
+    longer to complete.
+    2. This function here creates a P: drive on your PC, and this
+    is where Arma will take data from, and this is where custom
+    data will be placed.
+9. In the newly created P: drive, make a directory called 
+"\Custom_Mods\Custom_Cars", or whatever you would like to
+call it. Just make sure there is a directory to place your
+custom file in.
+    1. Some sample sites with custom files are listed here:
+    
+10. Take the .obj file that you would like to use and place
+it in this directory, creating sub-directories for each as
+you see fit.
+11. Go back to the Arma 3 Tools application (see steps 1-4)
+and click on "Object Builder."
+12. Once in Object Builder, go to File->Import->OBJ File.
+Locate your file in the directory that you chose and import
+it.
+13. Once imported, Object Builder will next ask you to scale
+the object file. The number you put in here will depend on the
+size of the object in the file. Start with 1, and play around
+with different numbers until you get a sensible result. The
+resulting object in the application should be no larger than
+5x5x5 units on the graph the app provides.
+14. Go to File->Options and ensure that next to External
+Viewer, this path and command is listed:
+    P:\buldozer.exe -buldozer -name=Buldozer -window -noLand
+    -exThreads=0 -noLogs -noAsserts -cfg=p:\buldozer.cfg.
+Hit ok once this is confirmed.
+15. Now this is where some knowledge of 3D modeling is
+helpful. There should be a red square in the toolbar; this
+is Buldozer. When clicked, it should show a Start/Restart
+option. Click this, and the 3d Modeler Buldozer will run.
+This will show you what the model will look like in Arma.
+    1. The controls in Buldozer are similar to that of most
+    3D modelers. This guide will assume that you have your
+    model just as you would like it in Arma. Buldozer is
+    only here to ensure that what you have is correct.
+    2. If the object does not look like what you want, you
+    can edit it within the Object Builder application. The
+    UI is not too hard to navigate, but a tutorial can be
+    found here (set of 5 videos): #1 - https://youtu.be/VqSIcbUMdNo #2 - 
+    https://youtu.be/v5f3QKGw46Q #3 - https://youtu.be/Fzzx8-KdhTs #4 - 
+    https://youtu.be/v_yktoJhwBc #5 - https://youtu.be/ciXdmH2lCeo
+    3. A lot of the details in these videos is unnecessary,
+    it is merely included for documentation.
+16. Now, in Object Builder, save the object as a .p3d file,
+and put it in the same directory where you placed the .obj
+file.
+17. Next, a config file needs to be created so Arma can read
+it as a car. Details about creating a config file can be found
+in this video: https://youtu.be/jJ7E-Eov5mo. This file has
+quite a lot in it, but for this purpose, a lot of it is
+unnecessary. However, the video details every part of the
+file, and what is needed to make it run.
+18. Once the config file is created, go back to Steam->Library->
+Tools->Arma 3 Tools. From here click "Launch Addon Builder."
+19. In the source directory, choose the car directory you created
+in step 9. In the destination directory, create a seperate
+folder to place the packed data. Name this however you wish.
+20. Once the data is packed, everything should be set! Go into
+the Arma editor and choose any map you prefer. On the right hand
+side of the window, search the name of your vehicle. If it is
+not there, something may have gone wrong with the textures or config
+of the vehicle. If it is there, click and drag it onto the world.
+As long as everything went as it should have, the vehicle should
+appear!
+
+Troubleshooting for this process can be found in this Youtube
+playlist: https://www.youtube.com/playlist?list=PL64QY_ftN4sHB86nnFJ866tmZj6BQFv_1
+
+This is a very complicated process, so it may take time to create
+and verify all of the necessary data.
 
 
 ## Examples

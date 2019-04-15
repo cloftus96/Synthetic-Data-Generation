@@ -17,7 +17,7 @@ The Python script starts by writing the Arma 3 script. This
 script will get stored in a separate file for later use. It
 then opens the game on the system and navigates through the
 menu to the editor using an autoclick function. After getting
-to the editor on the map "Altis," an Arma 3 "mission" is then
+to the editor, an Arma 3 "mission" is then
 run. This mission will be the Arma 3 script that was created at the
 start of the python script. This Arma 3 script will generate the object that the neural
 network needs pictures of, and start taking screenshots of it.
@@ -32,14 +32,11 @@ In order for the script to work correctly:
     - This is the version that the script was tested on. The
     script is not guaranteed to work on any other version.
 - This script also uses MATLAB 2018b. It is **imperative** that
-this specific version is installed, as the script uses a function
+this **specific version** is installed, as the script uses a function
 that only this version has.
 - The game Arma 3 **AND** Steam must **BOTH** be installed **and** updated. 
-This script opens the game directly from the executable instead 
-of the launcher, and if the game or Steam is not updated, 
-not only will the sleep times be off due to updates, but the
-executable file will just load the launcher, which will not
-work.
+If the game or Steam is not updated, the sleep times will be
+off due to updates.
 - Before running this project, run the game Arma 3 once
 beforehand, and ensure two things:
     - all necessary licenses have been accepted.
@@ -48,16 +45,6 @@ beforehand, and ensure two things:
 - Make sure that the game Arma 3 is **closed** before running
 this project. Having two copies of the game open may cause
 unnecessary lag.
-- The script has multiple instances of the Arma 3 executable 
-(arma3_x64.exe) path. This file is typically installed to this
-folder:
- 
-    %HOMEDIRECTORY%\Program Files (x86)\Steam\steamapps\common\Arma 3
-
-  This is the path used in the script. However, this can 
-  change from system to system. Make sure that each instance of 
-  this path corresponds to the correct path in your system.
- 
 - Some times of day are so dark that nothing can be seen
 (the times we believe are roughly from 12am-5am). There is
 a night vision mode in the game, but it is not implemented

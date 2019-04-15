@@ -51,13 +51,15 @@ def main():
     print('This is your resolution: ' + str(userWidth) + ' x ' + str(userHeight))
     print('')
 
-    # windows command prompts to open the game launcher
+    # windows run window prompts to open the game launcher
     pyautogui.keyDown('win')
     pyautogui.press('r')
     pyautogui.keyUp('win')
+    time.sleep(1)
     pyautogui.press('delete')
     time.sleep(1)
     pyautogui.typewrite('steam://run/107410')
+    time.sleep(1)
     pyautogui.press('enter')
 
     time.sleep(15)
@@ -74,7 +76,11 @@ def main():
     pyautogui.press('down')
     time.sleep(.5)
     pyautogui.press('down')
+    time.sleep(1)
     pyautogui.press('enter')
+
+    # wait for game to open
+    time.sleep(130)
 
     # open the game and sleep to wait for the game to open
     # before running, change this path to the Arma3_64.exe file on your own computer

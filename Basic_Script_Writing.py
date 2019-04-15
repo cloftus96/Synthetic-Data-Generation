@@ -14,7 +14,7 @@ from pathlib import Path
 def arma3_script_generator(map_pos, vehicle_names, fog_increment, time_increment, pos, cc, angle):
 
     try:
-        f = open(str(Path(os.path.expanduser('D:\\SteamLibrary\\steamapps\\common\\Arma 3\\Missions\\DataGeneration.Stratis\\briefing.sqf'))), 'w+')
+        f = open(str(Path(os.path.expanduser('~\\Documents\\Arma 3\\missions\\DataGeneration.Stratis\\briefing.sqf'))), 'w+')
     except Exception:
         print('ERROR:')
         print('Issue opening the Data_Generator.sqf file. See arma3_script_generator function.')

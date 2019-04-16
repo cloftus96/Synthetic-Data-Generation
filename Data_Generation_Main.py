@@ -10,6 +10,14 @@ import image_manager
 
 
 def main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, cam_delay, cam_x_offset, fog_incr, time_incr):
+    # store config params for using to count images for annotation
+    config_params = {'map_positions': map_pos,
+                     'vehicle_names': vehicle_names,
+                     'cam_rota_angle_step': cam_rota_angle_step,
+                     'vehicle_rota_angle_step': vehicle_rota_angle_step,
+                     'fog_incr': fog_incr,
+                     'time_incr': time_incr
+                     }
     # generate the necessary directory
     Basic_Script_Writing.create_mission_dir()
 
@@ -18,7 +26,7 @@ def main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, c
     main_script_generator.generate_script(map_pos, vehicle_names, fog_incr, time_incr, position_array, vehicle_rota_angle_step)
 
     # create a process whose job is to run the file mover code
-    image_file_manager = mp.Process(target=image_manager.image_file_mover, args=(cam_delay/2,))
+    image_file_manager = mp.Process(target=image_manager.image_file_mover, args=(cam_delay/2, config_params,))
     image_file_manager.start()
 
     # once we have the script, run the game and execute the script within it

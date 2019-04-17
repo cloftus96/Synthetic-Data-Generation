@@ -79,9 +79,6 @@ def main():
     time.sleep(1)
     pyautogui.press('enter')
 
-    # wait for game to open
-    time.sleep(130)
-
     # open the game and sleep to wait for the game to open
     # before running, change this path to the Arma3_64.exe file on your own computer
     # try:
@@ -104,6 +101,7 @@ def main():
         time.sleep(1)
         pyautogui.click(button='left')
 
+        # wait for game to open
         time.sleep(130)
 
         # this click will open the editor map select screen
@@ -174,6 +172,9 @@ def main():
         pyautogui.moveTo(136, 981)
         time.sleep(1)
         pyautogui.click(button='left')
+
+        # wait for game to open
+        time.sleep(130)
 
         # this click will open the editor map select screen
         pyautogui.moveTo(1302, 598, 1)

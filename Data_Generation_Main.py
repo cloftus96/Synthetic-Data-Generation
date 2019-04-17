@@ -26,15 +26,15 @@ def main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, c
     main_script_generator.generate_script(map_pos, vehicle_names, fog_incr, time_incr, position_array, vehicle_rota_angle_step)
 
     # create a process whose job is to run the file mover code
-    image_file_manager = mp.Process(target=image_manager.image_file_mover, args=(cam_delay/2, config_params,))
+    image_file_manager = mp.Process(target=image_manager.image_file_mover, args=(cam_delay/2, config_params, position_array,))
     image_file_manager.start()
 
     # once we have the script, run the game and execute the script within it
     Arma_3_PyAutoGUI.main()
 
     # this section will wait for the screenshots to end, then kill Arma, and end this script
-    # insert wait here
-    # os.system("TASKKILL /F /IM arma3_x64.exe")
+    image_file_manager.join()
+    os.system("TASKKILL /F /IM arma3_x64.exe")
 
 
 if __name__ == '__main__':
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     """
     # Use Abstract Syntax Tree to evaluate tuples and lists in cmd line args
     map_pos = ast.literal_eval(sys.argv[1])
-    vehicle_names = sys.argv[2] # will need to be ast.literal_eval(sys.argv[2]) when we get multiple vehicle support
+    vehicle_names = ast.literal_eval(sys.argv[2])
     cam_rota_angle_step = float(sys.argv[3])
     vehicle_rota_angle_step = float(sys.argv[4])
     cam_delay = float(sys.argv[5])

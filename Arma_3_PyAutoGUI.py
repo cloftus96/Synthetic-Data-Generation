@@ -54,6 +54,7 @@ def main():
     # open the game and sleep to wait for the game to open
     # before running, change this path to the Arma3_64.exe file on your own computer
     try:
+        # subprocess.Popen(['D:\\Downloads for D drive\\Steam\\steamapps\\common\\Arma 3\\Arma3_x64.exe'])
         subprocess.Popen(['C:\\Program Files (x86)\\Steam\\steamapps\\common\\Arma 3\\Arma3_x64.exe'])
     except FileNotFoundError:
         print('ERROR:')

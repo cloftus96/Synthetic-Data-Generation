@@ -104,6 +104,7 @@ def image_file_mover(check_delay, config_params, cam_pos_list):
             time_frac, time_hr = math.modf(6 + tod_ct * config_params['time_incr'])
             time_min = int(round(time_frac * 60))
             timestr = '%d:%d' % (time_hr, time_min)
+            print('Current camera position count is: %d' % cam_pos_ct)
             data = [filename,
                     config_params['vehicle_names'][vehicle_idx],
                     config_params['map_positions'][map_pos_idx][0],

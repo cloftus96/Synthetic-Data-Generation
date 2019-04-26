@@ -44,9 +44,9 @@ def image_file_mover(check_delay, config_params, cam_pos_list):
     img_ctr = 1
     blank_ctr = 1
     done = False
-    num_cam_positions = int(1 + math.floor(360/config_params['cam_rota_angle_step']))
+    num_cam_positions = int(1 + math.floor(359/config_params['cam_rota_angle_step']))
     print("Number of camera positions: %d" % num_cam_positions)
-    num_vehicle_rotations = int(1 + math.floor(360/config_params['vehicle_rota_angle_step']))
+    num_vehicle_rotations = int(1 + math.floor(359/config_params['vehicle_rota_angle_step']))
     print("Number of vehicle rotations: %d" % num_vehicle_rotations)
     num_fog_settings = int(1 + math.floor(0.8/config_params['fog_incr']))
     print("Number of fog settings: %d" % num_fog_settings)
@@ -89,6 +89,7 @@ def image_file_mover(check_delay, config_params, cam_pos_list):
     # re-open file for append to write the data. I will leave this file open for time concerns while moving files
     annotation_csv = open(annotation_file_path, 'a', newline='')
     annotation_writer = csv.writer(annotation_csv)
+    print('The camera position list is: %s' % cam_pos_list)
     # while img_ctr <= num_images and blank_ctr <= num_images:
     while img_ctr <= num_images:
         screenshot = Path(str(screenshot_path) + '\\arma3screenshot.png')
@@ -104,7 +105,6 @@ def image_file_mover(check_delay, config_params, cam_pos_list):
             time_frac, time_hr = math.modf(6 + tod_ct * config_params['time_incr'])
             time_min = int(round(time_frac * 60))
             timestr = '%d:%d' % (time_hr, time_min)
-            print('Current camera position count is: %d' % cam_pos_ct)
             data = [filename,
                     config_params['vehicle_names'][vehicle_idx],
                     config_params['map_positions'][map_pos_idx][0],

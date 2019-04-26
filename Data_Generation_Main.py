@@ -35,6 +35,7 @@ def main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, c
     # this section will wait for the screenshots to end, then kill Arma, and end this script
     image_file_manager.join()
     os.system("TASKKILL /F /IM arma3_x64.exe")
+    os.system("TASKKILL /F /IM arma3launcher.exe")
 
 
 if __name__ == '__main__':

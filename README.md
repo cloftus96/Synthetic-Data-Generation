@@ -60,7 +60,6 @@ More resolutions may be added in the future.
 
 ### Error Codes
 - Error Code 0: Script ran as intended
-- Error Code 1: Path to the game executable is incorrect
 - Error Code 2: Resolution unsupported by script
 - Error Code 3: Issue with .sqf file creation
 - Error Code 4: Issue with the file merging process

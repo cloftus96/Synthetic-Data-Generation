@@ -41,6 +41,8 @@ def arma3_script_generator(map_pos, vehicle_names, fog_increment, time_increment
             f.write('fogvalue = 0;\n')
             f.write('timevalue = 6;\n')
             f.write('angle = %d;\n\n' % angle)
+            f.write('{_currentVehicle deleteVehicleCrew _x} forEach crew _currentVehicle;\n')
+            f.write('deleteVehicle _currentVehicle;\n')
             # top loop vehicle positions
             # next is vehicles
             # next is environments (fog, rain, time of day)
@@ -50,8 +52,6 @@ def arma3_script_generator(map_pos, vehicle_names, fog_increment, time_increment
             f.write('\t\twhile {fogvalue < .8} do\n')
             f.write('\t\t{\n')
             f.write('\t\t\twhile {angleface < 360} do\n')
-            f.write('\t\t\t{_currentVehicle deleteVehicleCrew _x} forEach crew _currentVehicle;\n')
-            f.write('\t\t\tdeleteVehicle _currentVehicle;\n')
             f.write('\t\t\tsleep %d;\n' % cc)
             f.write('\t\t\t{\n')
 

@@ -44,12 +44,18 @@ def image_file_mover(check_delay, config_params, cam_pos_list):
     img_ctr = 1
     blank_ctr = 1
     done = False
-    num_cam_positions = 1 + math.floor(360/config_params['cam_rota_angle_step'])
-    num_vehicle_rotations = 1 + math.floor(360/config_params['vehicle_rota_angle_step'])
-    num_fog_settings = 1 + math.floor(0.8/config_params['fog_incr'])
-    num_time_settings = 1 + math.floor(13.5/config_params['time_incr'])  # from 6 to 19.5
+    num_cam_positions = int(1 + math.floor(360/config_params['cam_rota_angle_step']))
+    print("Number of camera positions: %d" % num_cam_positions)
+    num_vehicle_rotations = int(1 + math.floor(360/config_params['vehicle_rota_angle_step']))
+    print("Number of vehicle rotations: %d" % num_vehicle_rotations)
+    num_fog_settings = int(1 + math.floor(0.8/config_params['fog_incr']))
+    print("Number of fog settings: %d" % num_fog_settings)
+    num_time_settings = int(1 + math.floor(13.5/config_params['time_incr']))  # from 6 to 19.5
+    print("Number of time settings: %d" % num_time_settings)
     num_vehicles = len(config_params['vehicle_names'])
+    print("Number of vehicles: %d" % num_vehicles)
     num_map_positions = len(config_params['map_positions'])
+    print("Number of map positions: %d" % num_map_positions)
     num_images = num_map_positions * num_vehicles * num_cam_positions * num_vehicle_rotations * num_fog_settings * num_time_settings
     images_per_vehicle = num_images/num_vehicles
     images_per_vehicle_at_pos = images_per_vehicle/num_map_positions
@@ -74,14 +80,14 @@ def image_file_mover(check_delay, config_params, cam_pos_list):
     # if not screenshot_path.exists(): # I will fix this later
         # need to do some error stuff here
     # open annotation csv file and write the header data. THIS WILL BLOW AWAY THE FILE CONTENTS
-    annotation_file_path = Path(str(screenshot_path) + '\\AnnotationData.csv')
-    annotation_csv = open(annotation_file_path, 'w+')
+    annotation_file_path = Path(str(dest_dir) + '\\AnnotationData.csv')
+    annotation_csv = open(annotation_file_path, 'w+', newline='')
     annotation_writer = csv.writer(annotation_csv)
     annotation_writer.writerow(['filename','vehiclename','target_x','target_y','target_z','camera_x','camera_y','camera_z',
                                'foglevel','time','TR','BR','TL','BL'])
     annotation_csv.close()
     # re-open file for append to write the data. I will leave this file open for time concerns while moving files
-    annotation_csv = open(annotation_file_path, 'a')
+    annotation_csv = open(annotation_file_path, 'a', newline='')
     annotation_writer = csv.writer(annotation_csv)
     # while img_ctr <= num_images and blank_ctr <= num_images:
     while img_ctr <= num_images:
@@ -98,6 +104,7 @@ def image_file_mover(check_delay, config_params, cam_pos_list):
             time_frac, time_hr = math.modf(6 + tod_ct * config_params['time_incr'])
             time_min = int(round(time_frac * 60))
             timestr = '%d:%d' % (time_hr, time_min)
+            print('Current camera position count is: %d' % cam_pos_ct)
             data = [filename,
                     config_params['vehicle_names'][vehicle_idx],
                     config_params['map_positions'][map_pos_idx][0],

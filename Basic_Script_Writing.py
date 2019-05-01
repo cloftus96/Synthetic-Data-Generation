@@ -26,12 +26,14 @@ def arma3_script_generator(map_pos, vehicle_names, fog_increment, time_increment
     for v_idx, v_val in enumerate(vehicle_names):
         for mp_idx, mp_val in enumerate(map_pos):
             f.write('skipTime (6 - daytime + 24 ) % 24;\n')
+            f.write('sleep 1;\n')
             f.write('0 setFog 0;\n')
             f.write('0 setOvercast 0;\n')
             f.write('0 setRain 0;\n')
             f.write('angleface = 0;\n')
             f.write('fogvalue = 0;\n')
             f.write('timevalue = 6;\n')
+            f.write('enableEnvironment [false, false];\n')
             f.write('angle = %d;\n\n' % angle)
             # top loop vehicle positions
             # next is vehicles

@@ -25,6 +25,7 @@ def arma3_script_generator(map_pos, vehicle_names, fog_increment, time_increment
 
     for v_idx, v_val in enumerate(vehicle_names):
         for mp_idx, mp_val in enumerate(map_pos):
+            # Sets up initialization variables
             f.write('skipTime (6 - daytime + 24 ) % 24;\n')
             f.write('sleep 1;\n')
             f.write('0 setFog 0;\n')
@@ -35,10 +36,10 @@ def arma3_script_generator(map_pos, vehicle_names, fog_increment, time_increment
             f.write('timevalue = 6;\n')
             f.write('enableEnvironment [false, false];\n')
             f.write('angle = %d;\n\n' % angle)
-            # top loop vehicle positions
-            # next is vehicles
-            # next is environments (fog, rain, time of day)
-            # last is angles
+            # top loop is time of day
+            # next is fog
+            # next is vehicle angles
+            # last is camera angles
             f.write('\twhile {timevalue < 19.5} do\n')
             f.write('\t{\n')
             f.write('\t\twhile {fogvalue < .8} do\n')
@@ -48,28 +49,34 @@ def arma3_script_generator(map_pos, vehicle_names, fog_increment, time_increment
 
 
             for idx, val in enumerate(pos):
+                # Creates the vehicle at specified user position
                 f.write('\t\t\t\t_currentVehicle = "%s" createVehicle [%d, %d, %d];\n'
                         % (vehicle_names[v_idx], map_pos[mp_idx][0], map_pos[mp_idx][1], map_pos[mp_idx][2]))
                 f.write('\t\t\t\tcreateVehicleCrew _currentVehicle;\n')
                 f.write('\t\t\t\t_currentVehicle setdir angleface;\n')
                 f.write('\t\t\t\t_currentVehicle setVehiclePosition [_currentVehicle, [], 0];\n')
                 f.write('\t\t\t\tsleep %d;\n' % cc)
+                # Sets the camera positions relative to the vehicle and with user input parameters
                 f.write('\t\t\t\tpos1 = _currentVehicle modelToWorld [0,5,5];\n')
                 f.write('\t\t\t\tcam = "camera" camCreate pos1;\n')
                 f.write('\t\t\t\tcam cameraEffect ["INTERNAL", "BACK"];\n\n')
                 f.write('\t\t\t\tpos%d = pos1 vectorAdd [%d,%d,%d];\n' % (idx + 2, pos[idx][0], pos[idx][1], pos[idx][2]))
                 f.write('\t\t\t\tcam camSetPos pos%s;\n' % str(int(idx)+2))
                 f.write('\t\t\t\tcam camSetTarget _currentVehicle;\n')
+                # Moves the camera into position and takes a picture
                 f.write('\t\t\t\tcam camCommit %d;\n' % cc)
                 f.write('\t\t\t\twaitUntil {camCommitted cam};\n')
                 f.write('\t\t\t\tsleep .2;\n')
                 f.write('\t\t\t\tscreenshot "arma3screenshot.png";\n\n')
+                # Deletes the vehicle
                 f.write('\t\t\t\t{_currentVehicle deleteVehicleCrew _x} forEach crew _currentVehicle;\n')
                 f.write('\t\t\t\tdeleteVehicle _currentVehicle;\n')
                 f.write('\t\t\t\tsleep %d;\n' % cc)
+                # Takes a blank image to compare with the other image
                 f.write('\t\t\t\tscreenshot "arma3blank.png";\n\n')
                 f.write('\t\t\t\tsleep %d;\n' % cc)
 
+            # increments loop variables
             f.write('\t\t\t\tangleface = angleface+angle;\n')
             f.write('\t\t\t\tsleep %d;\n' % cc)
             f.write('\t\t\t};\n')

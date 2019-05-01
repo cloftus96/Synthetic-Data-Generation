@@ -142,7 +142,7 @@ def image_file_mover(check_delay, config_params, cam_pos_list):
 
         # if data screenshot is not present, check for img comparison screenshot
         elif blank_screenshot.exists() and not blank_screenshot.is_dir():
-            dest = Path(os.path.expanduser('~\\Documents\\SyntheticDataGen\\' + str(img_ctr) + '_blank.png'))
+            dest = Path(os.path.expanduser('~\\Documents\\SyntheticDataGen\\' + str(blank_ctr) + '_blank.png'))
             move_file(blank_screenshot, dest)
             blank_ctr += 1  # increment the image counter after a successful move
 

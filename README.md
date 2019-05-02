@@ -26,6 +26,12 @@ manage the screenshots created by putting them in an
 appropriate folder. Once all of the pictures have been taken,
 Python then closes the game and exits.
 
+### Usage
+Example usage
+```bash
+python Data_Generation_Main.py [[6258.016,5474.695,0],[5998.337,4960.8,0]] ['B_CTRG_LSV_01_light_F','B_GEN_Van_02_transport_F'] 120 361 3 50 0.5 12 50
+```
+
 ### Notes
 In order for the script to work correctly:
 - Python 3.7 must be installed, preferably to the path %HOMEDIRECTORY%\Python37.

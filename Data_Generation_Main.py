@@ -9,7 +9,7 @@ import main_script_generator
 import image_manager
 
 
-def main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, cam_delay, cam_x_offset, fog_incr, time_incr):
+def main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, cam_delay, cam_x_offset, fog_incr, time_incr, cam_z_val):
     # store config params for using to count images for annotation
     config_params = {'map_positions': map_pos,
                      'vehicle_names': vehicle_names,
@@ -22,7 +22,7 @@ def main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, c
     Basic_Script_Writing.create_mission_dir()
 
     # generate script
-    position_array = main_script_generator.position_generator(cam_rota_angle_step, cam_x_offset)
+    position_array = main_script_generator.position_generator(cam_rota_angle_step, cam_x_offset, cam_z_val)
     main_script_generator.generate_script(map_pos, vehicle_names, fog_incr, time_incr, position_array, vehicle_rota_angle_step)
 
     # create a process whose job is to run the file mover code
@@ -50,6 +50,7 @@ if __name__ == '__main__':
             a value lower than 0.8 if they wish for fog to show up in the dataset. However, to disable fog, >0.8 can be used.
         8) time_incr :  The increment in time of day in Arma 3. This is in 24-hour time, and accepts fractional hours.
             e.g. 1.5 would result in time of day increments of one hour and thirty minutes.
+        9) cam_z_val : The value of the z-offset for the camera location.
     """
     # Use Abstract Syntax Tree to evaluate tuples and lists in cmd line args
     map_pos = ast.literal_eval(sys.argv[1])
@@ -60,5 +61,6 @@ if __name__ == '__main__':
     cam_x_offset = float(sys.argv[6])
     fog_incr = float(sys.argv[7])
     time_incr = float(sys.argv[8])
-    main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, cam_delay, cam_x_offset, fog_incr, time_incr)
+    cam_z_val = float(sys.argv[9])
+    main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, cam_delay, cam_x_offset, fog_incr, time_incr, cam_z_val)
 

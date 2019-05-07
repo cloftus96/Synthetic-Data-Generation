@@ -14,7 +14,6 @@ def position_generator(angle_step, x_init, cam_z_val):
     return pos_array
 
 
-def generate_script(map_pos, vehicle_names, fog_increment, time_increment, pos_array, rota_angle_step):
-    default_cc = 2
-    Basic_Script_Writing.arma3_script_generator(map_pos, vehicle_names, fog_increment, time_increment, pos_array, default_cc, rota_angle_step)
+def generate_script(map_pos, vehicle_names, fog_increment, time_increment, pos_array, rota_angle_step, cc_val):
+    Basic_Script_Writing.arma3_script_generator(map_pos, vehicle_names, fog_increment, time_increment, pos_array, cc_val, rota_angle_step)
 

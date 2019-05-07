@@ -23,7 +23,7 @@ def main(map_pos, vehicle_names, cam_rota_angle_step, vehicle_rota_angle_step, c
 
     # generate script
     position_array = main_script_generator.position_generator(cam_rota_angle_step, cam_x_offset, cam_z_val)
-    main_script_generator.generate_script(map_pos, vehicle_names, fog_incr, time_incr, position_array, vehicle_rota_angle_step)
+    main_script_generator.generate_script(map_pos, vehicle_names, fog_incr, time_incr, position_array, vehicle_rota_angle_step, cam_delay)
 
     # create a process whose job is to run the file mover code
     image_file_manager = mp.Process(target=image_manager.image_file_mover, args=(cam_delay/2, config_params, position_array,))

@@ -31,6 +31,29 @@ Example usage
 ```bash
 python Data_Generation_Main.py [[6258.016,5474.695,0],[5998.337,4960.8,0]] ['B_CTRG_LSV_01_light_F','B_GEN_Van_02_transport_F'] 120 361 3 50 0.5 12 50
 ```
+Arguments
+1. *Map position list* - This is the list of all map locations to simulate as a list of ordered triples.
+These **must** be typed as a Pythonic list with each ordered triple as a Pythonic list *or* tuple. No spaces.
+2. *Vehicle name list* - This is a list of all in-game vehicles to simulate. This is a
+list of strings. These **must** be typed as a Pythonic list of strings. The strings must be
+quoted (either single or double is fine). No spaces within this list.
+3. *Camera rotation angle step* - The angle step in the XY plane by which to rotate the camera around the
+vehicle between each image.
+4. *Vehicle rotation angle step* - The angle step by which to rotate the vehicle with respect to its
+previous oritnetation.
+5. *Cam commit time* - The number of seconds it takes to move the camera to the next position. Note
+that this has **not** been tested with values less than 2. If this value is too low, image file
+management may not work as intended.
+6. *Camera XY position offset* - The radius of the circle in the XY plane about which to rotate the
+camera.
+7. *Fog increment* - The change in level of fog between each simulated fog setting. Simulated fog values
+can be between 0 and 0.8.
+8. *Time of day increment* - The change in time of day between each time of day setting. Time of day values
+range from 6:00 to 19:30. An example (including partial hours): 1.5 = 1 hour 30 minutes between
+each time setting.
+9. *Camera Z offset* - The number of units off the ground the camera will be when taking the pictures.
+For large vehicles (like tanks) this can be up to 100. For smaller civilian vehicles this is best
+limited to something around 50. This can vary depending on the kind of image data desired.
 
 ### Notes
 In order for the script to work correctly:

@@ -1,4 +1,3 @@
-Pillow>=5.4.1
 PyAutoGUI>=0.9.41
 PyGetWindow>=0.0.4
 PyMsgBox>=1.0.6

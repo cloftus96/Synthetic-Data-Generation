@@ -84,8 +84,10 @@ More resolutions may be added in the future.
 
     %HOMEDIRECTORY%\Users\\%MainUser%\Documents\SyntheticDataGen
 
-  Ensure before running the project that this directory is either
-  empty or non-existant.
+  Ensure before running the script that this directory is either
+  empty or non-existent. **IMPORTANT: The user should move all data** 
+  **out of this folder when done to avoid having data overwritten by a**
+  **future execution.**
 
 ### Error Codes
 - Error Code 0: Script ran as intended

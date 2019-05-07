@@ -37,13 +37,18 @@ def move_file(src, dest):
 
 
 def image_file_mover(check_delay, config_params, cam_pos_list):
-    """ This function will check a pre-determined directory for pre-determined file name and will continue to check,
+    """ Parameters:
+            check_delay: how long to wait between checking for image file existence
+            config_params: a dictionary of relevant configuration parameters used in this run of the program
+            cam_pos_list: the list of generated camera positions
+        Description:
+        This function will check a pre-determined directory for pre-determined file name and will continue to check,
     sleeping for <check_delay> seconds between each check. If the file exists, it will move it to a separate
     pre-determined directory. check_delay should be 1/2 the time it takes to rotate the camera to the next position.
+        Future work could be to set the process affinity here to a different core, but isn't important right now.
     """
     img_ctr = 1
     blank_ctr = 1
-    done = False
     num_cam_positions = int(1 + math.floor(359/config_params['cam_rota_angle_step']))
     print("Number of camera positions: %d" % num_cam_positions)
     num_vehicle_rotations = int(1 + math.floor(359/config_params['vehicle_rota_angle_step']))
@@ -135,6 +140,7 @@ def image_file_mover(check_delay, config_params, cam_pos_list):
                                 vehicle_idx = vehicle_idx + 1
 
             img_ctr += 1  # increment the image counter after a successful move
+            # I have never seen it print these
             if vehicle_idx == num_vehicles and img_ctr <= num_images:
                 print("There appears to be an error counting images...")
                 print("Current number of vehicles evaluated: %d" % vehicle_idx)
